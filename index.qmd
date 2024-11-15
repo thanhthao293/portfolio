@@ -1,5 +1,7 @@
 ---
 title: ""
+about:
+  template: jolla
 ---
 
 this is where i put basic information about myself

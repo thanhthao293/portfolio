@@ -6,12 +6,13 @@ website:
   title: "Thao Nguyen"
   navbar:
     background: "#b1c9db"
+    foreground: "#FFFFFF"
     left:
-      - text: "home"
+      - text: "Home"
         href: index.qmd
-      - text: "about me"
+      - text: "About"
         href: about.qmd
-      - text: "explore"
+      - text: "Explore"
         href: explore.qmd
     right: 
       - icon: linkedin
