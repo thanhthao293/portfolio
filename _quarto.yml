@@ -4,21 +4,27 @@ project:
 
 website:
   title: "Thao Nguyen"
+  favicon: logo.png
   navbar:
-    background: "#b1c9db"
+    title: false
+    logo: logo.png
+    background: "#b1c6d5"
     foreground: "#FFFFFF"
     left:
-      - text: "Home"
-        href: index.qmd
       - text: "About"
-        href: about.qmd
+        href: index.qmd
       - text: "Explore"
         href: explore.qmd
+      - text: "Resume"
+        href: Resume.pdf
+        target: _blank
     right: 
       - icon: linkedin
         href: https://www.linkedin.com/in/thao-nguyen-5b1088219/
       - icon: github
         href: https://github.com/thanhthao293
+
+      
 
 format:
   html:
