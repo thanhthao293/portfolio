@@ -5,11 +5,19 @@ project:
 website:
   title: "Thao Nguyen"
   navbar:
+    background: "#b1c9db"
     left:
+      - text: "home"
+        href: index.qmd
       - text: "about me"
         href: about.qmd
       - text: "explore"
         href: explore.qmd
+    right: 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/thao-nguyen-5b1088219/
+      - icon: github
+        href: https://github.com/thanhthao293
 
 format:
   html:
@@ -18,4 +26,5 @@ format:
     toc: true
 
 editor: visual
+
 

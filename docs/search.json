@@ -2,15 +2,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "thanhthao",
+    "title": "Thao Nguyen",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "this is where i put basic information about myself"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Thao Nguyen",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "this is where i put more information about myself (education, work experience, resume, etc.)"
+  },
+  {
+    "objectID": "explore.html",
+    "href": "explore.html",
+    "title": "Thao Nguyen",
+    "section": "",
+    "text": "this is where i put my projects"
   }
 ]
