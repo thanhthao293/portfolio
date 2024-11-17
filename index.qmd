@@ -2,6 +2,13 @@
 title: ""
 about:
   template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/thao-nguyen-5b1088219/
+    - icon: github
+      text: GitHub
+      href: https://github.com/thanhthao293
 ---
 
 this is where i put basic information about myself

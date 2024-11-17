@@ -23,14 +23,18 @@ website:
         href: https://www.linkedin.com/in/thao-nguyen-5b1088219/
       - icon: github
         href: https://github.com/thanhthao293
-
-      
-
+  page-footer:
+    left: Copyright 2024, Thao Nguyen
+    
 format:
   html:
-    theme: journal
-    css: styles.css
+    theme: 
+      - journal
+      - styles.scss
     toc: true
+    toc-title: Table of Contents
+    toc-location: left
+    page-layout: full
 
 editor: visual
 
