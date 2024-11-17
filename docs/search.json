@@ -110,5 +110,12 @@
     "title": "Miami University Annual Mileage Estimation",
     "section": "5. References",
     "text": "5. References\nR Core Team. (2024). R: A language and environment for statistical computing [R software]. R Foundation for Statistical Computing. https://www.R-project.org/\nAuguie, B. (2017). gridExtra: Miscellaneous functions for “Grid” graphics (R package version 2.3). https://CRAN.R-project.org/package=gridExtra\nIannone, R., Cheng, J., Schloerke, B., Hughes, E., Lauer, A., Seo, J., Brevoort, K., & Roy, O. (2024). gt: Easily create presentation-ready display tables (R package version 0.11.0). https://CRAN.R-project.org/package=gt\nMock, T. (2023). gtExtras: Extending ‘gt’ for beautiful HTML tables (Version 0.5.0) [R package]. CRAN. https://CRAN.R-project.org/package=gtExtras\nWickham, H. (2016). ggplot2: Elegant graphics for data analysis [R package]. Springer-Verlag. https://ggplot2.tidyverse.org\nWickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., & Yutani, H. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. https://doi.org/10.21105/joss.01686\nWickham, H., Vaughan, D., & Girlich, M. (2024). tidyr: Tidy messy data (R package version 1.3.1). https://CRAN.R-project.org/package=tidyr\nNational Highway Traffic Safety Administration. (2023, June). Traffic safety facts: Motorcycles 2021 data (DOT HS 813 466). U.S. Department of Transportation. https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813466.pdf\nU.S. Department of Energy. (2024, January). Average fuel economy by major vehicle category. Alternative Fuels Data Center. https://afdc.energy.gov/data/10310\nU.S. Environmental Protection Agency. (n.d.). Greenhouse gas emissions from a typical passenger vehicle. EPA. https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle"
+  },
+  {
+    "objectID": "docs/index.html",
+    "href": "docs/index.html",
+    "title": "Thao Nguyen",
+    "section": "",
+    "text": "this is where i put basic information about myself"
   }
 ]
