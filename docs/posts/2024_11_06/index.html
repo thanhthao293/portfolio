@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Thao Nguyen, Christina Bao">
-<meta name="dcterms.date" content="2024-10-23">
+<meta name="author" content="Thao Nguyen">
+<meta name="dcterms.date" content="2024-11-06">
 
-<title>Thao Nguyen - Miami University Annual Mileage Estimation</title>
+<title>Thao Nguyen - Effect of Plant Origin Compounds on Fungal Morphogenesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,7 +154,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-right">
-      <h1 class="title">Miami University Annual Mileage Estimation</h1>
+      <h1 class="title">Effect of Plant Origin Compounds on Fungal Morphogenesis</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
                 <div class="quarto-category">Statistical Analysis</div>
@@ -168,14 +168,14 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Thao Nguyen, Christina Bao </p>
+               <p>Thao Nguyen </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 23, 2024</p>
+        <p class="date">November 6, 2024</p>
       </div>
     </div>
     
@@ -194,13 +194,13 @@ window.Quarto = {
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology"><strong>2. Methodology</strong></a>
   <ul class="collapse">
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><strong>2.1. Data</strong></a></li>
-  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis"><strong>2.2. Statistical Analysis</strong></a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><strong>2.2. Analysis</strong></a></li>
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software"><strong>2.3. Software</strong></a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>3. Results</strong></a>
   <ul class="collapse">
   <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda"><strong>3.1. EDA</strong></a></li>
-  <li><a href="#estimate-construction" id="toc-estimate-construction" class="nav-link" data-scroll-target="#estimate-construction"><strong>3.2. Estimate Construction</strong></a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><strong>3.2. Hypothesis Testing</strong></a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>4. Conclusion</strong></a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><strong>5. References</strong></a></li>
@@ -226,11 +226,6 @@ h1.title {
   font-weight: bold;
 }
 
-h2.subtitle {
-  text-align: center;
-  font-weight: bold;
-}
-
 h4.author {
   text-align: center;
 }
@@ -238,127 +233,82 @@ h4.author {
 </style>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction"><strong>1. Introduction</strong></h2>
-<p>Growing impacts of climate change have driven many worldwide companies and organizations to commit to carbon neutrality targets. Miami University (MU) is no exception, having submitted its Miami 2040 Climate Action Plan in May 2024 with the aim of achieving carbon neutrality on its Oxford campus by 2040. This plan builds on over a decade of commitment, as MU has been taking steps to reduce its carbon footprint since 2008.</p>
-<p>A significant component of this initiative is reducing emissions generated from employee and student commuting. MU has set ambitious targets, including reducing student commuting emissions by 50% by 2030 and 90% by 2040, while faculty and staff commuting emissions are also slated for a 90% reduction by 2040.</p>
-<p>This project, in line with President Crawford and the University Climate Action Plan, aims to analyze commuting patterns among MU employees and students. By estimating weekly and yearly commuting mileage and gasoline consumption for fiscal year 2023, the project aims to provide actionable insights intro transportation-related emissions at MU and support the institution’s broader sustainability goals.</p>
+<p>The limited availability of safe and effective antifungal treatments makes the exploration of new compounds essential in combating fungal infections. <em>Candida albicans</em> is an opportunistic fungus known for its ability to switch between different forms, particularly from a yeast (single-cell) form to filamentous forms like hyphea and pseudohyphae, which enhance its invasiveness and virulence. This project aims to determine whether chemical compounds isolated from <em>Aloe arborescens</em> can inhibit the germination of <em>C. albicans</em> and reduce the formation of hyphae.</p>
+<p>To investigate this, researchers conducted morphogenesis assays, exposing a strain of <em>C. albicans</em> to seven treatments, including a 0.2-micron filtered <em>Aloe arborescens</em> extract, isolated compounds ‘A’ and ‘B,’ their commercial versions from Sigma-Aldrich (‘A-SA’ and ‘B-SA’), and combinations of these compounds. In each treatment, 200 cells were observed in five replicates, and their forms were categorized based on the presence of hyphae (denoted GT), buds, or pseudohyphae (denoted PH).</p>
+<p>The primary hypotheses for this research are: (1) exposure to any of the seven treatments will significantly inhibit fungal germination and reduce hyphae formation; (2) treatments involving compound ‘A’ will be more effective than those involving compound ‘B’; and (3) the 0.2-milcron filtered <em>Aloe arborescens</em> extract will show the greatest reduction in hyphae formation compared to the other treatments.</p>
+<p>The findings from this study could have important future implications for antimycotic treatments, potentially identifying new antifungal agents that can improve the options available for treating fungal infections.</p>
 </section>
 <section id="methodology" class="level2">
 <h2 class="anchored" data-anchor-id="methodology"><strong>2. Methodology</strong></h2>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data"><strong>2.1. Data</strong></h3>
-<p>The project utilizes two datasets, one for students and one for employees, both sourced from an optional survey included with the on-campus parking permit application. This survey is designed to assess commuting patterns based on respondents’ home addresses, commute frequency, and the modes of transportation they use.</p>
-<p>The employee dataset contains 1976 rows and 15 variables, which are described as follows:</p>
+<p>The dataset, provided by Dr.&nbsp;Marcia Lee from Miami University, contains 40 observations with 12 variables, each detailing the response of yeast cells under various treatments. The variables are described as follows:</p>
 <ol type="1">
-<li><code>DESIGNATION</code>: The position or role of the person who completed the survey</li>
-<li><code>commute_days_fall_spring</code>: Number of days per week the employee commutes to the Oxford campus during the Fall/Spring semesters</li>
-<li><code>remote_days_fall_spring</code>: Number of days per week the employee works remotely during the Fall/Spring semesters</li>
-<li><code>commute_days_summer_jterm</code>: Number of days per week the employee commutes to the Oxford campus during Summer/J-term</li>
-<li><code>remote_days_summer_jterm</code>: Number of days per week the employee works remotely during Summer/J-term</li>
-<li><code>commute_gaspowered_100pct_time</code>: Whether the employee exclusively commutes using gas-powered vehicles</li>
-<li><code>drive_gas</code>: Percentage of total commuting time the employee uses a gas, hybrid electric, or diesel vehicle</li>
-<li><code>drive_electric</code>: Percentage of total commuting time the employee uses an electric vehicle</li>
-<li><code>walk</code>: Percentage of total commuting time the employee walks to the Oxford campus</li>
-<li><code>bicycle</code>: Percentage of total commuting time the employee uses a bicycle or other non-motorized means</li>
-<li><code>BCRTAbus</code>: Percentage of total commuting time the employee uses the BCRTA Bus</li>
-<li><code>carpool_as_passenger</code>: Percentage of total commuting time the employee vanpools or carpools as a passenger</li>
-<li><code>drive_motorcycle</code>: Percentage of total commuting time the employee drives a motorcycle, scooter, or moped</li>
-<li><code>other</code>: Percentage of total commuting time the employee uses other transportation methods not listed above</li>
-<li><code>daily_miles_one_way</code>: The one-way distance, in miles, the employee travels to the Oxford campus each day</li>
+<li><p><code>treatment</code>: Type of treatment applied to the yeast cells</p></li>
+<li><p><code>rep</code>: Replicate identifier for each treatment type</p></li>
+<li><p><code>tube</code>: Unique identifier for the tube containing the treated yeast cells</p></li>
+<li><p><code>no_change</code>: Count of cells (out of 200) that show no morphological changes</p></li>
+<li><p><code>GT_only</code>: Count of cells (out of 200) that develop only a hypha</p></li>
+<li><p><code>PH_only</code>: Count of cells (out of 200) that develop only a pseudohypha</p></li>
+<li><p><code>Bud_only</code>: Count of cells (out of 200) that develop only a bud</p></li>
+<li><p><code>GT_PH</code>: Count of cells (out of 200) that develop both hypha and pseudohypha</p></li>
+<li><p><code>GT_Bud</code>: Count of cells (out of 200) that develop both hypha and bud</p></li>
+<li><p><code>PH_Bud</code>: Count of cells (out of 200) that develop both pseudohypha and bud</p></li>
+<li><p><code>mul_GTs</code>: Count of cells (out of 200) that develop multiple hyphae</p></li>
 </ol>
-<p>The student dataset contains 319 observation and 14 variables, which are described as follows:</p>
-<ol type="1">
-<li><code>DESIGNATION</code>: The position or role of the person who completed the survey</li>
-<li><code>live_on_campus_in_2021_2022</code>: Whether the student lived on campus in the 2021-2022 academic year</li>
-<li><code>commute_days_fall_spring</code>: Number of days per week the student commutes to the Oxford campus during the Fall/Spring semesters</li>
-<li><code>commute_days_jterm</code>: Number of days per week the student commutes to the Oxford campus during J-term</li>
-<li><code>commute_days_summer</code>: Number of days per week the student commutes to the Oxford campus during Summer</li>
-<li><code>walk</code>: Percentage of total commuting time the student walks to the Oxford campus</li>
-<li><code>drive_gas</code>: Percentage of total commuting time the student uses a gas, hybrid electric, or diesel vehicle</li>
-<li><code>drive_electric</code>: Percentage of total commuting time the student uses an electric vehicle</li>
-<li><code>bicycle</code>: Percentage of total commuting time the student uses a bicycle or other non-motorized transportation</li>
-<li><code>BCRTAbus</code>: Percentage of total commuting time the student uses the BCRTA bus</li>
-<li><code>carpool_as_passenger</code>: Percentage of total commuting time the student carpools or vanpools as a passenger</li>
-<li><code>drive_motorcycle</code>: Percentage of total commuting time the student uses a motorcycle, scooter, or moped</li>
-<li><code>other</code>: Percentage of total commuting time the student uses other transportation methods not listed above</li>
-<li><code>daily_miles_one_way</code>: The one-way distance, in miles, the student travels to the Oxford campus each day</li>
-</ol>
-<p>Pre-processing is necessary to address data quality issues identified in the survey responses. Since this project focuses on commuting to the Oxford campus, observations from students and employees who reported zero weekly commuting were excluded from the analysis, even if they reported travel mileage. In the original survey, respondents were asked to report the percentage of time they use each mode of transportation. This led to inconsistencies, as some respondents interpreted the question differently, resulting in total percentages that did not sum to 100%. Specifically, in the student dataset, 13 rows had totals either exceeding or falling short of 100%, with 4 rows reporting 0%. Similarly, in the employee dataset, 22 rows did not total 100%, with 4 also reporting 0%. To resolve this, for rows where the total percentage was not 0%, the percentages for each mode of transportation were rescaled proportionally to sum to 100%.</p>
-<p>After rescaling, 1 row in the student data and 3 rows in the employee data still do not sum to 100%, as these respondents did not provide specific ratings for vehicle usage. While this does not impact mileage estimation, it may introduce uncertainty when estimating gas usage. Consequently, these observations will be excluded from gas mileage estimates. Additionally, 7 rows in the employee data lack information on vehicle breakdown and whether gas-powered commuting occurred 100% of the time. Although these rows can still be used to estimate mileage due to known commuting days, again, they will be excluded from gas mileage estimates due to insufficient data.</p>
-<p>Another issue found in the employee dataset involved discrepancies between the respondents’ answers. Some employees indicated they did not always commute using gas-powered vehicles but later reported using gas-powered vehicles 100% of the time. In such cases, their initial response was corrected to “Yes.” For respondents who answered “Yes” but did not provide a breakdown of transportation modes, their <code>drive_gas</code> percentage was set to 100%, and all other transportation modes were set to 0%.</p>
-<p>In the employee data, there are columns for remote days and commute days. However, in some instances, the sum of remote and commute days exceeds 5, which may indicate either a misunderstanding of the survey or a hybrid working arrangement. Given that the survey primarily focuses on commuting, only the commute days column will be used for analysis.</p>
+<p>For modelling purposes, an additional variable to be used as a response variable, called <code>GT_total</code>, was created. This variable sums the total number of cells that exhibit any form of hyphae for each treatment replicate, whether as a standalone effect or in combination with other morphologies.</p>
+<p>With this, the final dataset has 40 observations and 13 variables.</p>
 </section>
-<section id="statistical-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="statistical-analysis"><strong>2.2. Statistical Analysis</strong></h3>
-<p>For estimating commuting mileage, usually, walking is not categorized as commuting, so it will be excluded from the total commuting percentage by subtracting the proportion of walking days from the total commuting days to calculate adjusted commute days per week. When calculating weekly commuting mileage, it’s essential to account for the different number of weeks in a term. As such, each individual’s commuting frequency in a week will be adjusted using a weighted average of the number of weeks across all terms (Fall, Spring, Summer, and J-term). The weekly commuting mileage for any respondent will then by calculated by multiplying the daily one-way miles traveled by 2, then by the adjusted number of days they commute in a week. To get an yearly estimate, there is no need to adjust for the commuting frequency in a week. It will be calculated as the sum of the number of miles they travel each Fall, Spring, Summer, and J-term semester, which is calculated as the daily one-way miles traveled times 2 times the number of days they travel in a week and times the number of weeks in a semester. There are 30 weeks in the spring-fall term, excluding breaks for Fall, Thanksgiving, and Spring. It is assumed that employees and students commute consistently, including in the final week. The J-term is typically 4 weeks, while the summer term is 12 weeks long. The same procedure applies to both student data and employee data.</p>
-<p>For estimating gasoline usage, only gas-powered vehicles and motorcycles are included in calculations. It is assumed the stakeholders would be more interested in personal vehicle gas consumption, so public types of commuting such as BCRTA buses or carpooling will not be considered, even if they also use gas. Additionally, buses operate independently of passenger numbers and are available to everyone; therefore, calculating gasoline usage for buses separately is more accurate. The procedure for estimating weekly and yearly gasoline usage is the same as estimating commuting mileage for both students and employees, but to determine students’ and employees’ mileage for gas-powered vehicles and motorcycles, miles traveled need to be converted to gallons. According to the U.S. Department of Energy, the average miles per gallon (MPG) for motorcycles is 44, and for cars, it is 24.4.</p>
-<p>According to the U.S. Environmental Protection Agency, each gallon of gasoline burned produces approximately 8,887 grams of CO2. To estimate the total miles and mtCO2e for students and employees, we calculate the mean values by dividing the sum of miles and mtCO2e by each sample size. We then multiply these means by the respective populations—3,937 employees and 537 students—and sum the results to estimate the total impact for the entire community. The population of 537 off-campus students is used instead of 3,501 students because the sample student data only concerns off-campus students, so it would be more reasonable to try to generalize this to a population of students that also live off-campus.</p>
-<p>To obtain standard errors for the population estimates, a bootstrapping method proposed by Min-Te Chao and Shaw-Hwa Lo was employed, which is suitable when the population size is known. This method calculates the ratio of the population size to the sample size, denoted as <span class="math inline">\(k\)</span>. A bootstrap population is then created by repeating each sample from the original data <span class="math inline">\(k\)</span> times, resulting in a larger dataset. Random samples are taken from this new dataset to form the bootstrap samples. By repeatedly sampling and calculating different population total estimates from these resamples, the standard error of the population total can be determined.</p>
-<p>If <span class="math inline">\(k\)</span> is an integer, the bootstrapping procedure is implemented as described. However, if <span class="math inline">\(k\)</span> is not an integer, the nearest integers below and above <span class="math inline">\(k\)</span> are identified, referred to as <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span>. Bootstrap populations are created for both <span class="math inline">\(k_1\)</span> and <span class="math inline">\(k_2\)</span>, denoted as <span class="math inline">\(N_1\)</span> and <span class="math inline">\(N_2\)</span>. During each bootstrapping round, either <span class="math inline">\(N_1\)</span> or <span class="math inline">\(N_2\)</span> is randomly selected as the bootstrap sample, with the selection probability weighted by how close <span class="math inline">\(k\)</span> is to <span class="math inline">\(k_1\)</span> or <span class="math inline">\(k_2\)</span>.</p>
+<section id="analysis" class="level3">
+<h3 class="anchored" data-anchor-id="analysis"><strong>2.2. Analysis</strong></h3>
+<p>As the distribution of cells forming hyphae is not normally distributed, a Poisson generalized linear model (GLM) with an offset of 200, <span class="math inline">\(log(200)\)</span>, was modeled and has the following formula:</p>
+<p><span class="math display">\[
+log(X_{ij}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}\,+\,log(200);\,i = 1, 2, ..., 7;\,j = 1, 2, ..., 5
+\]</span></p>
+<p>where <span class="math inline">\(X_{ij}\)</span> is the number of cells developing hyphae for the <span class="math inline">\(i^{th}\)</span> treatment and <span class="math inline">\(j^{th}\)</span> replicate.</p>
+<p>The motivation behind including an offset is that there is an upper limit of 200 cells for each treatment replicate, so the response variable is constrained and cannot increase indefintely. The Poisson distribution, however, assumes that counts can range from zero to infinity, which is problematic when there is actually an upper bound in existence. When counts become constrained near this upper limit, the distribution may become skewed, violating the assumptions of standard count models like the Poisson, which typically assume constant or proportional variance across all levels of the predictor variables.</p>
+<p>By introducing an offset, the maximum possible count of 200 is adjusted, which ensures that the response variable stays within a reasonable range. Mathematically, if the term is moved to the left side of the equation above, the left side becomes:</p>
+<p><span class="math display">\[
+log(X_{ij}) - log(200) = log(\frac{X_{ij}}{200})
+\]</span></p>
+<p>This effectively models the logarithm of the proportion of cells forming hyphae relative to the upper bound (200). As a result, the response variable is now constrained to a bounded range between 0 and 1, which is more appopriate when the counts have an upper limit. Thus, the formula for the Poisson GLM with offset can be written as:</p>
+<p><span class="math display">\[
+log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
+\]</span></p>
+<p>Since the response variable is now the logarithm of the proportion of hyphae-forming cells (i.e., the number of hyphae-forming cells divided by the total cell count of 200 for each treatment replicate), comparisons between any two treatment groups will be the logarithm of the ratio of these proportions. Specifically, for two treatment groups, the difference in their log-transformed proportions represents the log of the ratio between the proportion of hyphae-forming cells in one treatment group relative to the proportion in the other.</p>
+<p>In Section 3.2, where comparisons are made, the ratio between the two treatment groups is obtained by exponentiating this logarithmic difference. This exponentiation restores the scale of the data back to a ratio of the proportions, which allows for a direct comparison of the relative effectiveness of the two treatments in promoting hyphae formation.</p>
+<p>Additionally, to answer the research questions, custom contrasts were applied to compare each pair of treatment groups. When multiple contrasts were tested simultaneously, the Benjamini-Hochberg procedure was used to adjust for the potential inflation of Type I error due to the multiple contrasts. All statistical tests were conducted at a significance level of 0.05.</p>
 </section>
 <section id="software" class="level3">
 <h3 class="anchored" data-anchor-id="software"><strong>2.3. Software</strong></h3>
-<p>All data analysis tasks were performed using R version 4.3.1, along with additional packages, which are cited in the reference section.</p>
+<p>All data analysis steps were performed using R version 4.3.1, along with additional packages that will be cited in the reference section.</p>
 </section>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results"><strong>3. Results</strong></h2>
 <section id="eda" class="level3">
 <h3 class="anchored" data-anchor-id="eda"><strong>3.1. EDA</strong></h3>
-<p>First, let’s examine the distribution of usage frequency in percentage for each vehicle type. Among students, the data reveals a predominant reliance on gas-powered vehicles, which is expected given that this information is collected during parking permit applications on campus. Interestingly, there is also a notable frequency of students walking a lot to campus, surpassing the usage of other transportation modes such as bicycles, buses, and carpooling.</p>
+<p>First, let’s examine the average counts of morphological attributes across five replicates for each treatment level. Except for the unexposed control group, most of the 200 cells in each replicate for every treatment exhibits no significant changes in the development of any attributes such as hyphae, pseudohyphae, or buds. The control groups is the only group that demonstrates a remarkably high average of 170 cells developing hypha, much higher than the average of 44 cell counts in the compound B-SA group. The average counts of cells developing pseudohypha are around 30 for the treatments involving compound A, compound A-SA, and the combination of A-SA and B-SA. Regardless of the treatment type, very few cells form buds, and even fewer exhibit multiple attributes simultaneously, such as both hypha and pseudohypha. However, compared to other groups, the treatments with compound A and compound A-SA show a relatively higher occurence of cells developing both hypha and buds at the same time. It is not common to see cells developing multiple hyphae in this case.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The same pattern can be observed for data related to employees where gas-powered vehicles is the most common and also the only means of transportation. The variability in transportation choices is limited, as employees typically have more housing options than students, allowing them to live farther from the main campus. Consequently, gas-powered vehicles tend to be the most practical choice for commuting. Additionally, the low usage of electric vehicles can be attributed to their relative scarcity compared to gas-powered vehicles, as well as the lack of supporting infrastructure in the Oxford area.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Looking at the distribution of daily miles driven one way, it can be seen that most people are within 5 miles of the campus. Fewer people travel more than 10 miles per day. It’s notable that the daily travel mileage distributions for students and employees are quite similar.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="estimate-construction" class="level3">
-<h3 class="anchored" data-anchor-id="estimate-construction"><strong>3.2. Estimate Construction</strong></h3>
-<section id="breakdown-of-weekly-and-annual-commuting-mileage-by-demographics" class="level4">
-<h4 class="anchored" data-anchor-id="breakdown-of-weekly-and-annual-commuting-mileage-by-demographics"><strong>3.2.1 Breakdown of weekly and annual commuting mileage by demographics</strong></h4>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="rdgtdnuwsy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="sajmlfdsbs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#rdgtdnuwsy table {
+#sajmlfdsbs table {
   font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rdgtdnuwsy thead, #rdgtdnuwsy tbody, #rdgtdnuwsy tfoot, #rdgtdnuwsy tr, #rdgtdnuwsy td, #rdgtdnuwsy th {
+#sajmlfdsbs thead, #sajmlfdsbs tbody, #sajmlfdsbs tfoot, #sajmlfdsbs tr, #sajmlfdsbs td, #sajmlfdsbs th {
   border-style: none;
 }
 
-#rdgtdnuwsy p {
+#sajmlfdsbs p {
   margin: 0;
   padding: 0;
 }
 
-#rdgtdnuwsy .gt_table {
+#sajmlfdsbs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -384,12 +334,12 @@ h4.author {
   border-left-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_caption {
+#sajmlfdsbs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rdgtdnuwsy .gt_title {
+#sajmlfdsbs .gt_title {
   color: #333333;
   font-size: 30px;
   font-weight: bold;
@@ -401,7 +351,7 @@ h4.author {
   border-bottom-width: 0;
 }
 
-#rdgtdnuwsy .gt_subtitle {
+#sajmlfdsbs .gt_subtitle {
   color: #333333;
   font-size: 16px;
   font-weight: initial;
@@ -413,7 +363,7 @@ h4.author {
   border-top-width: 0;
 }
 
-#rdgtdnuwsy .gt_heading {
+#sajmlfdsbs .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -425,13 +375,13 @@ h4.author {
   border-right-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_bottom_border {
+#sajmlfdsbs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_col_headings {
+#sajmlfdsbs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: rgba(255, 255, 255, 0);
@@ -446,7 +396,7 @@ h4.author {
   border-right-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_col_heading {
+#sajmlfdsbs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -466,7 +416,7 @@ h4.author {
   overflow-x: hidden;
 }
 
-#rdgtdnuwsy .gt_column_spanner_outer {
+#sajmlfdsbs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -478,15 +428,15 @@ h4.author {
   padding-right: 4px;
 }
 
-#rdgtdnuwsy .gt_column_spanner_outer:first-child {
+#sajmlfdsbs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rdgtdnuwsy .gt_column_spanner_outer:last-child {
+#sajmlfdsbs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rdgtdnuwsy .gt_column_spanner {
+#sajmlfdsbs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 3px;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -498,11 +448,11 @@ h4.author {
   width: 100%;
 }
 
-#rdgtdnuwsy .gt_spanner_row {
+#sajmlfdsbs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rdgtdnuwsy .gt_group_heading {
+#sajmlfdsbs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -528,7 +478,7 @@ h4.author {
   text-align: left;
 }
 
-#rdgtdnuwsy .gt_empty_group_heading {
+#sajmlfdsbs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -543,15 +493,15 @@ h4.author {
   vertical-align: middle;
 }
 
-#rdgtdnuwsy .gt_from_md > :first-child {
+#sajmlfdsbs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rdgtdnuwsy .gt_from_md > :last-child {
+#sajmlfdsbs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rdgtdnuwsy .gt_row {
+#sajmlfdsbs .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -570,7 +520,7 @@ h4.author {
   overflow-x: hidden;
 }
 
-#rdgtdnuwsy .gt_stub {
+#sajmlfdsbs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -583,7 +533,7 @@ h4.author {
   padding-right: 5px;
 }
 
-#rdgtdnuwsy .gt_stub_row_group {
+#sajmlfdsbs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -597,15 +547,15 @@ h4.author {
   vertical-align: top;
 }
 
-#rdgtdnuwsy .gt_row_group_first td {
+#sajmlfdsbs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rdgtdnuwsy .gt_row_group_first th {
+#sajmlfdsbs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rdgtdnuwsy .gt_summary_row {
+#sajmlfdsbs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -615,16 +565,16 @@ h4.author {
   padding-right: 5px;
 }
 
-#rdgtdnuwsy .gt_first_summary_row {
+#sajmlfdsbs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_first_summary_row.thick {
+#sajmlfdsbs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rdgtdnuwsy .gt_last_summary_row {
+#sajmlfdsbs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -634,7 +584,7 @@ h4.author {
   border-bottom-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_grand_summary_row {
+#sajmlfdsbs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -644,7 +594,7 @@ h4.author {
   padding-right: 5px;
 }
 
-#rdgtdnuwsy .gt_first_grand_summary_row {
+#sajmlfdsbs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -654,7 +604,7 @@ h4.author {
   border-top-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_last_grand_summary_row_top {
+#sajmlfdsbs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -664,11 +614,11 @@ h4.author {
   border-bottom-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_striped {
+#sajmlfdsbs .gt_striped {
   background-color: #F5F5F5;
 }
 
-#rdgtdnuwsy .gt_table_body {
+#sajmlfdsbs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -677,7 +627,7 @@ h4.author {
   border-bottom-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_footnotes {
+#sajmlfdsbs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -691,7 +641,7 @@ h4.author {
   border-right-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_footnote {
+#sajmlfdsbs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -700,7 +650,7 @@ h4.author {
   padding-right: 5px;
 }
 
-#rdgtdnuwsy .gt_sourcenotes {
+#sajmlfdsbs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -714,7 +664,7 @@ h4.author {
   border-right-color: #D3D3D3;
 }
 
-#rdgtdnuwsy .gt_sourcenote {
+#sajmlfdsbs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -722,1086 +672,170 @@ h4.author {
   padding-right: 5px;
 }
 
-#rdgtdnuwsy .gt_left {
+#sajmlfdsbs .gt_left {
   text-align: left;
 }
 
-#rdgtdnuwsy .gt_center {
+#sajmlfdsbs .gt_center {
   text-align: center;
 }
 
-#rdgtdnuwsy .gt_right {
+#sajmlfdsbs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rdgtdnuwsy .gt_font_normal {
+#sajmlfdsbs .gt_font_normal {
   font-weight: normal;
 }
 
-#rdgtdnuwsy .gt_font_bold {
+#sajmlfdsbs .gt_font_bold {
   font-weight: bold;
 }
 
-#rdgtdnuwsy .gt_font_italic {
+#sajmlfdsbs .gt_font_italic {
   font-style: italic;
 }
 
-#rdgtdnuwsy .gt_super {
+#sajmlfdsbs .gt_super {
   font-size: 65%;
 }
 
-#rdgtdnuwsy .gt_footnote_marks {
+#sajmlfdsbs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rdgtdnuwsy .gt_asterisk {
+#sajmlfdsbs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rdgtdnuwsy .gt_indent_1 {
+#sajmlfdsbs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rdgtdnuwsy .gt_indent_2 {
+#sajmlfdsbs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rdgtdnuwsy .gt_indent_3 {
+#sajmlfdsbs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rdgtdnuwsy .gt_indent_4 {
+#sajmlfdsbs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rdgtdnuwsy .gt_indent_5 {
+#sajmlfdsbs .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Table 1. Average counts of cell morphologies by treatment</caption>
 <thead>
-<tr class="header gt_heading">
-<th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="font-size: 20px"><strong>Weekly and Annual Mileage Estimate by Demographics</strong></th>
-</tr>
-<tr class="odd gt_col_headings gt_spanner_row">
-<th rowspan="2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
-<th colspan="2" id="Weekly" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><span class="gt_column_spanner">Weekly</span></th>
-<th colspan="2" id="Yearly" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><span class="gt_column_spanner">Yearly</span></th>
-</tr>
 <tr class="header gt_col_headings">
-<th id="Total Miles" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Total Miles</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
-<th id="Total Miles" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Total Miles</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Employee</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_weekly_miles">365,037.02</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_weekly_se">5,972.42</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_yearly_miles">16,791,704.16</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_yearly_se">280,047.43</td>
-</tr>
-<tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Student</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_weekly_miles">38,717.44</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_weekly_se">1,395.23</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_yearly_miles">1,781,003.57</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_yearly_se">64,251.94</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>It can be seen that employees generally travel more than students, with weekly travel nearly 10 times greater and yearly travel about 15 times higher. This difference is understandable given that there are approximately 3,937 employees with parking permits compared to 537 off-campus students with parking permits. With around 7 times more employees than students and yet more than 10 times higher travelling distances, it is reasonable to say that employees have higher travel mileage than students do.</p>
-</section>
-<section id="breakdown-of-weekly-and-annual-commuting-gas-usage-by-demographics" class="level4">
-<h4 class="anchored" data-anchor-id="breakdown-of-weekly-and-annual-commuting-gas-usage-by-demographics"><strong>3.2.2. Breakdown of weekly and annual commuting gas usage by demographics</strong></h4>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="aqwhuvayec" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#aqwhuvayec table {
-  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#aqwhuvayec thead, #aqwhuvayec tbody, #aqwhuvayec tfoot, #aqwhuvayec tr, #aqwhuvayec td, #aqwhuvayec th {
-  border-style: none;
-}
-
-#aqwhuvayec p {
-  margin: 0;
-  padding: 0;
-}
-
-#aqwhuvayec .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 12px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#aqwhuvayec .gt_title {
-  color: #333333;
-  font-size: 30px;
-  font-weight: bold;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#aqwhuvayec .gt_subtitle {
-  color: #333333;
-  font-size: 16px;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#aqwhuvayec .gt_heading {
-  background-color: #FFFFFF;
-  text-align: left;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#aqwhuvayec .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#aqwhuvayec .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#aqwhuvayec .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#aqwhuvayec .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#aqwhuvayec .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#aqwhuvayec .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#aqwhuvayec .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#aqwhuvayec .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#aqwhuvayec .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#aqwhuvayec .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(255, 255, 255, 0);
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#aqwhuvayec .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#aqwhuvayec .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#aqwhuvayec .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#aqwhuvayec .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#aqwhuvayec .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#aqwhuvayec .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#aqwhuvayec .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#aqwhuvayec .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_striped {
-  background-color: #F5F5F5;
-}
-
-#aqwhuvayec .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#aqwhuvayec .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#aqwhuvayec .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#aqwhuvayec .gt_left {
-  text-align: left;
-}
-
-#aqwhuvayec .gt_center {
-  text-align: center;
-}
-
-#aqwhuvayec .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#aqwhuvayec .gt_font_normal {
-  font-weight: normal;
-}
-
-#aqwhuvayec .gt_font_bold {
-  font-weight: bold;
-}
-
-#aqwhuvayec .gt_font_italic {
-  font-style: italic;
-}
-
-#aqwhuvayec .gt_super {
-  font-size: 65%;
-}
-
-#aqwhuvayec .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#aqwhuvayec .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#aqwhuvayec .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#aqwhuvayec .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#aqwhuvayec .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#aqwhuvayec .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#aqwhuvayec .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_heading">
-<th colspan="9" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="font-size: 20px"><strong>Weekly and Annual Gasoline Usage and CO<sub>2</sub> Emission Estimate by Demographics</strong></th>
-</tr>
-<tr class="odd gt_col_headings gt_spanner_row">
-<th rowspan="2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
-<th colspan="4" id="Weekly" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><span class="gt_column_spanner">Weekly</span></th>
-<th colspan="4" id="Yearly" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="font-weight: bold" scope="colgroup"><span class="gt_column_spanner">Yearly</span></th>
-</tr>
-<tr class="header gt_col_headings">
-<th id="Gasoline Usage" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Gasoline Usage</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
-<th id="Emitted CO<sub>2</sub> (g)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Emitted CO<sub>2</sub> (g)</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
-<th id="Gasoline Usage" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Gasoline Usage</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
-<th id="Emitted CO<sub>2</sub> (g)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Emitted CO<sub>2</sub> (g)</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Employee</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_weekly_gas">14,609.80</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_weekly_gas_se">244.79</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_weekly_co2">129,837,423.45</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_weekly_co2_se">2,243,941.41</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_yearly_gas">672,051.49</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_yearly_gas_se">11,402.69</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_yearly_co2">5,972,521,478.66</td>
-<td class="gt_row gt_center" headers="stub_1_1 pop_yearly_co2_se">100,152,023.54</td>
-</tr>
-<tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Student</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_weekly_gas">2,320.91</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_weekly_gas_se">85.82</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_weekly_co2">20,625,900.39</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_weekly_co2_se">736,371.09</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_yearly_gas">70,017.06</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_yearly_gas_se">2,471.47</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_yearly_co2">622,241,620.35</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 pop_yearly_co2_se">22,561,225.16</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>CO<sub>2</sub> emission from a gallon of gas is 8,887 grams CO<sub>2</sub> per gallon. Again, total gas consumption and CO<sub>2</sub> emissions are higher for employees than for students, reflecting the larger employee population. Employees’ weekly gas consumption and CO<sub>2</sub> emissions are generally about 7 times higher than those of students, while yearly totals are approximately 10 times greater. This disparity is not unusual, as many students do not commute during the summer and J-terms, whereas employees, particularly staff, continue to work during these periods.</p>
-</section>
-<section id="total-weekly-and-annual-commuting-mileage-gas-usage-and-co2-emissions-for-all-commuting-employees-and-students" class="level4">
-<h4 class="anchored" data-anchor-id="total-weekly-and-annual-commuting-mileage-gas-usage-and-co2-emissions-for-all-commuting-employees-and-students"><strong>3.2.3. Total weekly and annual commuting mileage, gas usage, and CO<sub>2</sub> emissions for all commuting employees and students</strong></h4>
-<p>The following table provides an estimate of commuting mileage, gas usage, and CO<sub>2</sub> emissions of all employees and students who applied for a parking permit on campus. This information can be compared to prior years’ statistics to gain an understanding of how well Miami University is doing on its road to carbon neutrality by 2040.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="khbftvneli" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#khbftvneli table {
-  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#khbftvneli thead, #khbftvneli tbody, #khbftvneli tfoot, #khbftvneli tr, #khbftvneli td, #khbftvneli th {
-  border-style: none;
-}
-
-#khbftvneli p {
-  margin: 0;
-  padding: 0;
-}
-
-#khbftvneli .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 12px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#khbftvneli .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#khbftvneli .gt_title {
-  color: #333333;
-  font-size: 30px;
-  font-weight: bold;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#khbftvneli .gt_subtitle {
-  color: #333333;
-  font-size: 16px;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#khbftvneli .gt_heading {
-  background-color: #FFFFFF;
-  text-align: left;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#khbftvneli .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#khbftvneli .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#khbftvneli .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#khbftvneli .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#khbftvneli .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#khbftvneli .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#khbftvneli .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
-  vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#khbftvneli .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#khbftvneli .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#khbftvneli .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#khbftvneli .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#khbftvneli .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#khbftvneli .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: rgba(255, 255, 255, 0);
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#khbftvneli .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#khbftvneli .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#khbftvneli .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#khbftvneli .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#khbftvneli .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#khbftvneli .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#khbftvneli .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#khbftvneli .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#khbftvneli .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#khbftvneli .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#khbftvneli .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#khbftvneli .gt_striped {
-  background-color: #F5F5F5;
-}
-
-#khbftvneli .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#khbftvneli .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#khbftvneli .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#khbftvneli .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#khbftvneli .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#khbftvneli .gt_left {
-  text-align: left;
-}
-
-#khbftvneli .gt_center {
-  text-align: center;
-}
-
-#khbftvneli .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#khbftvneli .gt_font_normal {
-  font-weight: normal;
-}
-
-#khbftvneli .gt_font_bold {
-  font-weight: bold;
-}
-
-#khbftvneli .gt_font_italic {
-  font-style: italic;
-}
-
-#khbftvneli .gt_super {
-  font-size: 65%;
-}
-
-#khbftvneli .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#khbftvneli .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#khbftvneli .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#khbftvneli .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#khbftvneli .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#khbftvneli .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#khbftvneli .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_heading">
-<th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="font-size: 20px"><strong>Estimates of Commuting Mileage, Gasoline Usage and CO<sub>2</sub> Emission Estimate</strong></th>
-</tr>
-<tr class="odd gt_col_headings">
 <th class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
-<th id="Weekly Estimate" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Weekly Estimate</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
-<th id="Yearly Estimate" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Yearly Estimate</th>
-<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">SE</th>
+<th id="No Change" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">No Change</th>
+<th id="GT Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">GT Only</th>
+<th id="PH Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">PH Only</th>
+<th id="Buds Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Buds Only</th>
+<th id="GT &amp;amp; PH" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">GT &amp; PH</th>
+<th id="GT &amp;amp; Buds" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">GT &amp; Buds</th>
+<th id="PH &amp;amp; Buds" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">PH &amp; Buds</th>
+<th id="Multi GT" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Multi GT</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Total Mileage</td>
-<td class="gt_row gt_center" headers="stub_1_1 combined_weekly_miles">401,900.36</td>
-<td class="gt_row gt_center" headers="stub_1_1 combined_weekly_se">6,199.55</td>
-<td class="gt_row gt_center" headers="stub_1_1 combined_yearly_miles">18,487,419.30</td>
-<td class="gt_row gt_center" headers="stub_1_1 combined_yearly_se">280,771.04</td>
+<td id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Control</td>
+<td class="gt_row gt_center" headers="stub_1_1 no_change">24 ± 7.11</td>
+<td class="gt_row gt_center" headers="stub_1_1 GT_only">170 ± 6.82</td>
+<td class="gt_row gt_center" headers="stub_1_1 PH_only">1.8 ± 1.3</td>
+<td class="gt_row gt_center" headers="stub_1_1 Bud_only">4.2 ± 2.86</td>
+<td class="gt_row gt_center" headers="stub_1_1 GT_PH">0 ± 0</td>
+<td class="gt_row gt_center" headers="stub_1_1 GT_Bud">0 ± 0</td>
+<td class="gt_row gt_center" headers="stub_1_1 PH_Bud">0 ± 0</td>
+<td class="gt_row gt_center" headers="stub_1_1 mul_GTs">0 ± 0</td>
 </tr>
 <tr class="even">
-<td id="stub_1_2" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Total Gasoline Usage</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 combined_weekly_miles">16,986.32</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 combined_weekly_se">267.12</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 combined_yearly_miles">738,399.80</td>
-<td class="gt_row gt_center gt_striped" headers="stub_1_2 combined_yearly_se">11,396.16</td>
+<td id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Whole Extract</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 no_change">185.4 ± 7.23</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 GT_only">6 ± 2.35</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 PH_only">1.4 ± 1.95</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 Bud_only">7.2 ± 6.46</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 GT_PH">0 ± 0</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 GT_Bud">0 ± 0</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 PH_Bud">0 ± 0</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_2 mul_GTs">0 ± 0</td>
 </tr>
 <tr class="odd">
-<td id="stub_1_3" class="gt_row gt_center gt_stub" data-quarto-table-cell-role="th" scope="row">Total CO2 Emission (Grams)</td>
-<td class="gt_row gt_center" headers="stub_1_3 combined_weekly_miles">150,957,519.95</td>
-<td class="gt_row gt_center" headers="stub_1_3 combined_weekly_se">2,280,543.58</td>
-<td class="gt_row gt_center" headers="stub_1_3 combined_yearly_miles">6,562,159,003.26</td>
-<td class="gt_row gt_center" headers="stub_1_3 combined_yearly_se">99,493,847.36</td>
+<td id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Compound A</td>
+<td class="gt_row gt_center" headers="stub_1_3 no_change">124.4 ± 12.82</td>
+<td class="gt_row gt_center" headers="stub_1_3 GT_only">13.8 ± 4.97</td>
+<td class="gt_row gt_center" headers="stub_1_3 PH_only">28.4 ± 3.85</td>
+<td class="gt_row gt_center" headers="stub_1_3 Bud_only">11 ± 4.36</td>
+<td class="gt_row gt_center" headers="stub_1_3 GT_PH">0 ± 0</td>
+<td class="gt_row gt_center" headers="stub_1_3 GT_Bud">10.4 ± 4.04</td>
+<td class="gt_row gt_center" headers="stub_1_3 PH_Bud">8 ± 2.24</td>
+<td class="gt_row gt_center" headers="stub_1_3 mul_GTs">4 ± 1.87</td>
+</tr>
+<tr class="even">
+<td id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Compound A-SA</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 no_change">137.8 ± 10.33</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 GT_only">10.8 ± 4.09</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 PH_only">27.6 ± 3.29</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 Bud_only">5.6 ± 4.72</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 GT_PH">0.4 ± 0.89</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 GT_Bud">10.2 ± 4.21</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 PH_Bud">5 ± 2.74</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_4 mul_GTs">2.6 ± 2.07</td>
+</tr>
+<tr class="odd">
+<td id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Compound B</td>
+<td class="gt_row gt_center" headers="stub_1_5 no_change">138.2 ± 11.3</td>
+<td class="gt_row gt_center" headers="stub_1_5 GT_only">24.4 ± 7.64</td>
+<td class="gt_row gt_center" headers="stub_1_5 PH_only">13.4 ± 4.51</td>
+<td class="gt_row gt_center" headers="stub_1_5 Bud_only">10.6 ± 4.56</td>
+<td class="gt_row gt_center" headers="stub_1_5 GT_PH">0.8 ± 1.1</td>
+<td class="gt_row gt_center" headers="stub_1_5 GT_Bud">6.2 ± 1.92</td>
+<td class="gt_row gt_center" headers="stub_1_5 PH_Bud">3 ± 1.87</td>
+<td class="gt_row gt_center" headers="stub_1_5 mul_GTs">3.4 ± 2.41</td>
+</tr>
+<tr class="even">
+<td id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Compound B-SA</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 no_change">122.8 ± 15.29</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 GT_only">44.2 ± 11.32</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 PH_only">18.6 ± 9.86</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 Bud_only">7 ± 2.24</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 GT_PH">0.4 ± 0.55</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 GT_Bud">3 ± 3.46</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 PH_Bud">1.8 ± 1.3</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_6 mul_GTs">2.2 ± 2.68</td>
+</tr>
+<tr class="odd">
+<td id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">A and B</td>
+<td class="gt_row gt_center" headers="stub_1_7 no_change">162.8 ± 12.09</td>
+<td class="gt_row gt_center" headers="stub_1_7 GT_only">17.8 ± 2.17</td>
+<td class="gt_row gt_center" headers="stub_1_7 PH_only">14.8 ± 11.88</td>
+<td class="gt_row gt_center" headers="stub_1_7 Bud_only">0.8 ± 1.3</td>
+<td class="gt_row gt_center" headers="stub_1_7 GT_PH">1.4 ± 1.34</td>
+<td class="gt_row gt_center" headers="stub_1_7 GT_Bud">1.4 ± 0.89</td>
+<td class="gt_row gt_center" headers="stub_1_7 PH_Bud">0.2 ± 0.45</td>
+<td class="gt_row gt_center" headers="stub_1_7 mul_GTs">0.8 ± 0.84</td>
+</tr>
+<tr class="even">
+<td id="stub_1_8" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">A-SA and B-SA</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 no_change">148.2 ± 13.14</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 GT_only">17 ± 4.3</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 PH_only">30 ± 9.33</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 Bud_only">1 ± 1.41</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 GT_PH">0.8 ± 0.84</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 GT_Bud">1 ± 1</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 PH_Bud">1.4 ± 2.19</td>
+<td class="gt_row gt_center gt_striped" headers="stub_1_8 mul_GTs">0.6 ± 0.89</td>
 </tr>
 </tbody>
 </table>
@@ -1809,26 +843,1513 @@ h4.author {
 </div>
 </div>
 </div>
+<p>So far, counts have been categorized into exclusive groups, such as cells showing no changes, developing only hypha, only pseudohypha, only buds, and combinations of these forms. However, the researchers are primarily interested in the formation of hypha. In other words, the development of hypha is the most significant, regardless of whether it occurs as a standalone attribute or in conjunction with other attributes. As a result, the counts of cells forming hyphae were consolidated into a single total column.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig1-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>Figure 1. Distribution of cell morphology counts by treatment (black points represent the average count for each treatment</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Figure 1 shows that the control group exhibits a high number of cells forming hyphae, while the treatment groups display significantly fewer hyphae formations. This suggests that the treatments are effective in reducing hyphae development. Compounds A, B, A-SA, and B-SA appear similarly effective, although compound B-SA is slightly less effective. However, it is challenging to determine from this plot whether treatments with compound A are more effective than those with compound B in reducing hyphae formation. The whole Aloe arborescens extract seems to be the most effective at reducing hyphae development.</p>
+<p>Examining the distribution of cells forming hyphae shows a right-skewed pattern. Consequently, tests assuming normality, such as one-way ANOVA, may not be suitable. Therefore, alternative methods for modeling the treatment effect on the total number of cells forming hyphae should be explored.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Figure 2. Distribution of hyphae-forming cells by treatment replicate</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-testing"><strong>3.2. Hypothesis Testing</strong></h3>
+<section id="any-treatment-will-be-able-to-reduce-hyphae-formation" class="level4">
+<h4 class="anchored" data-anchor-id="any-treatment-will-be-able-to-reduce-hyphae-formation">3.2.1. Any treatment will be able to reduce hyphae formation</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="uggeokctgf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#uggeokctgf table {
+  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uggeokctgf thead, #uggeokctgf tbody, #uggeokctgf tfoot, #uggeokctgf tr, #uggeokctgf td, #uggeokctgf th {
+  border-style: none;
+}
+
+#uggeokctgf p {
+  margin: 0;
+  padding: 0;
+}
+
+#uggeokctgf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uggeokctgf .gt_title {
+  color: #333333;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uggeokctgf .gt_subtitle {
+  color: #333333;
+  font-size: 16px;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uggeokctgf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(255, 255, 255, 0);
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 6px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uggeokctgf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uggeokctgf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uggeokctgf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uggeokctgf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(255, 255, 255, 0);
+  vertical-align: bottom;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uggeokctgf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uggeokctgf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uggeokctgf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uggeokctgf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uggeokctgf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uggeokctgf .gt_row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uggeokctgf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uggeokctgf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uggeokctgf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uggeokctgf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uggeokctgf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uggeokctgf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uggeokctgf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uggeokctgf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_striped {
+  background-color: #F5F5F5;
+}
+
+#uggeokctgf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uggeokctgf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uggeokctgf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uggeokctgf .gt_left {
+  text-align: left;
+}
+
+#uggeokctgf .gt_center {
+  text-align: center;
+}
+
+#uggeokctgf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uggeokctgf .gt_font_normal {
+  font-weight: normal;
+}
+
+#uggeokctgf .gt_font_bold {
+  font-weight: bold;
+}
+
+#uggeokctgf .gt_font_italic {
+  font-style: italic;
+}
+
+#uggeokctgf .gt_super {
+  font-size: 65%;
+}
+
+#uggeokctgf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uggeokctgf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uggeokctgf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uggeokctgf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uggeokctgf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uggeokctgf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uggeokctgf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Table 2. Comparison between the control group and the treatment groups</caption>
+<thead>
+<tr class="header gt_col_headings">
+<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Comparison</th>
+<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">ratio</th>
+<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">P-value</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">Whole Extract / Control</td>
+<td class="gt_row gt_center" headers="ratio">0.035</td>
+<td class="gt_row gt_center" headers="p.value">0.0000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="contrast">A / Control</td>
+<td class="gt_row gt_center gt_striped" headers="ratio">0.166</td>
+<td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">B / Control</td>
+<td class="gt_row gt_center" headers="ratio">0.141</td>
+<td class="gt_row gt_center" headers="p.value">0.0000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="contrast">Synthetic A / Control</td>
+<td class="gt_row gt_center gt_striped" headers="ratio">0.205</td>
+<td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">Synthetic B / Control</td>
+<td class="gt_row gt_center" headers="ratio">0.293</td>
+<td class="gt_row gt_center" headers="p.value">0.0000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="contrast">A and B / Control</td>
+<td class="gt_row gt_center gt_striped" headers="ratio">0.126</td>
+<td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">Synethic A and Synthetic B / Control</td>
+<td class="gt_row gt_center" headers="ratio">0.114</td>
+<td class="gt_row gt_center" headers="p.value">0.0000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>All comparisons are statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;\)</span> 0.05), and since the ratio of each treatment group to the control group is less than 1, it indicates that all treatments lead to a reduction in hyphae formation compared to the control group.</p>
+</section>
+<section id="treaments-involving-compound-a-will-be-better-than-those-involving-compound-b" class="level4">
+<h4 class="anchored" data-anchor-id="treaments-involving-compound-a-will-be-better-than-those-involving-compound-b">3.2.2. Treaments involving compound A will be better than those involving compound B</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="himacgmsdi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#himacgmsdi table {
+  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#himacgmsdi thead, #himacgmsdi tbody, #himacgmsdi tfoot, #himacgmsdi tr, #himacgmsdi td, #himacgmsdi th {
+  border-style: none;
+}
+
+#himacgmsdi p {
+  margin: 0;
+  padding: 0;
+}
+
+#himacgmsdi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#himacgmsdi .gt_title {
+  color: #333333;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#himacgmsdi .gt_subtitle {
+  color: #333333;
+  font-size: 16px;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#himacgmsdi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(255, 255, 255, 0);
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 6px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#himacgmsdi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#himacgmsdi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#himacgmsdi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#himacgmsdi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(255, 255, 255, 0);
+  vertical-align: bottom;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#himacgmsdi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#himacgmsdi .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#himacgmsdi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#himacgmsdi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#himacgmsdi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#himacgmsdi .gt_row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#himacgmsdi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#himacgmsdi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#himacgmsdi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#himacgmsdi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#himacgmsdi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#himacgmsdi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#himacgmsdi .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#himacgmsdi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_striped {
+  background-color: #F5F5F5;
+}
+
+#himacgmsdi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#himacgmsdi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#himacgmsdi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#himacgmsdi .gt_left {
+  text-align: left;
+}
+
+#himacgmsdi .gt_center {
+  text-align: center;
+}
+
+#himacgmsdi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#himacgmsdi .gt_font_normal {
+  font-weight: normal;
+}
+
+#himacgmsdi .gt_font_bold {
+  font-weight: bold;
+}
+
+#himacgmsdi .gt_font_italic {
+  font-style: italic;
+}
+
+#himacgmsdi .gt_super {
+  font-size: 65%;
+}
+
+#himacgmsdi .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#himacgmsdi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#himacgmsdi .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#himacgmsdi .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#himacgmsdi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#himacgmsdi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#himacgmsdi .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Table 3. Comparison between treatments containing compound A and compound B</caption>
+<thead>
+<tr class="header gt_col_headings">
+<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Comparison</th>
+<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">ratio</th>
+<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">P-value</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">Overall A / Overall B</td>
+<td class="gt_row gt_center" headers="ratio">0.906</td>
+<td class="gt_row gt_center" headers="p.value">0.2142</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The comparison between treatments involving compound A and those involving compound B is not statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;\)</span> 0.05), indicating that treatments with compound A are not more effective than those with compound B.</p>
+</section>
+<section id="the-0.2-micron-filtered-aloe-arborescens-treatment-will-be-the-most-effective-at-reducing-hyphae-formation" class="level4">
+<h4 class="anchored" data-anchor-id="the-0.2-micron-filtered-aloe-arborescens-treatment-will-be-the-most-effective-at-reducing-hyphae-formation">3.2.3. The 0.2 micron filtered Aloe arborescens treatment will be the most effective at reducing hyphae formation</h4>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="ohrsmfnmpk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#ohrsmfnmpk table {
+  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ohrsmfnmpk thead, #ohrsmfnmpk tbody, #ohrsmfnmpk tfoot, #ohrsmfnmpk tr, #ohrsmfnmpk td, #ohrsmfnmpk th {
+  border-style: none;
+}
+
+#ohrsmfnmpk p {
+  margin: 0;
+  padding: 0;
+}
+
+#ohrsmfnmpk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ohrsmfnmpk .gt_title {
+  color: #333333;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ohrsmfnmpk .gt_subtitle {
+  color: #333333;
+  font-size: 16px;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ohrsmfnmpk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(255, 255, 255, 0);
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 6px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ohrsmfnmpk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ohrsmfnmpk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ohrsmfnmpk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ohrsmfnmpk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: rgba(255, 255, 255, 0);
+  vertical-align: bottom;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ohrsmfnmpk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ohrsmfnmpk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ohrsmfnmpk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ohrsmfnmpk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ohrsmfnmpk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ohrsmfnmpk .gt_row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(255, 255, 255, 0);
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ohrsmfnmpk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohrsmfnmpk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ohrsmfnmpk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ohrsmfnmpk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ohrsmfnmpk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohrsmfnmpk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ohrsmfnmpk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohrsmfnmpk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_striped {
+  background-color: #F5F5F5;
+}
+
+#ohrsmfnmpk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohrsmfnmpk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ohrsmfnmpk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohrsmfnmpk .gt_left {
+  text-align: left;
+}
+
+#ohrsmfnmpk .gt_center {
+  text-align: center;
+}
+
+#ohrsmfnmpk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ohrsmfnmpk .gt_font_normal {
+  font-weight: normal;
+}
+
+#ohrsmfnmpk .gt_font_bold {
+  font-weight: bold;
+}
+
+#ohrsmfnmpk .gt_font_italic {
+  font-style: italic;
+}
+
+#ohrsmfnmpk .gt_super {
+  font-size: 65%;
+}
+
+#ohrsmfnmpk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ohrsmfnmpk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ohrsmfnmpk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ohrsmfnmpk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ohrsmfnmpk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ohrsmfnmpk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ohrsmfnmpk .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Table 4. Comparisons between whole extract treatment group and the remaining treatment groups</caption>
+<thead>
+<tr class="header gt_col_headings">
+<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Comparison</th>
+<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">ratio</th>
+<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">P-value</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">A / Whole Extract</td>
+<td class="gt_row gt_center" headers="ratio">4.700</td>
+<td class="gt_row gt_center" headers="p.value">0.0000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="contrast">B / Whole Extract</td>
+<td class="gt_row gt_center gt_striped" headers="ratio">4.000</td>
+<td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">Synthetic A / Whole Extract</td>
+<td class="gt_row gt_center" headers="ratio">5.800</td>
+<td class="gt_row gt_center" headers="p.value">0.0000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="contrast">Synthetic B / Whole Extract</td>
+<td class="gt_row gt_center gt_striped" headers="ratio">8.300</td>
+<td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="contrast">A and B / Whole Extract</td>
+<td class="gt_row gt_center" headers="ratio">3.567</td>
+<td class="gt_row gt_center" headers="p.value">0.0000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="contrast">Synethic A and Synthetic B / Whole Extract</td>
+<td class="gt_row gt_center gt_striped" headers="ratio">3.233</td>
+<td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Once again, all tests are statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;\)</span> 0.05). Since all of the ratios are bigger than 1, this suggest that the 0.2-micron filtered Aloe arborescens extract is the most effective treatment among the seven treatments tested.</p>
+<p>The results also show that using a combination of both compound A and compound B, regardless of whether they are natural or synthetic, is more effective than using either the natural or synthetic form of the compounds individually.</p>
 </section>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion"><strong>4. Conclusion</strong></h2>
-<p>Estimates of commuting mileage, gasoline consumption, and CO₂ emissions were calculated for Miami University’s employees and students, along with specific breakdowns for each group.</p>
-<p>However, these estimates are based on several assumptions due to data limitations. For instance, it is assumed that walking is not typically considered a form of commuting, so reported daily one-way miles exclude walking distances. Additionally, only motorcycles and gas-powered vehicles are included in gasoline consumption estimates, as relevant data, like gasoline consumed per miles, is available for these modes, and it is assumed that the focus is on gasoline use for personal vehicles. Consequently, other transportation modes, such as the BCRTA bus or carpooling, are not considered due to complications in estimating their mileage and their non-personal nature.</p>
+<p>After perfoming pairwise contrasts, it can be concluded that all of the significantly inhibit the formation of hyphae. Among them, the 0.2 micron filtered Aloe arborescens extract is found to be the most effective.</p>
+<p>When comparing treatments containing compound A to those containing compound B, no significant difference in the effectiveness is observed between the two groups.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references"><strong>5. References</strong></h2>
-<p>R Core Team. (2024). R: A language and environment for statistical computing [R software]. R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a></p>
-<p>Auguie, B. (2017). gridExtra: Miscellaneous functions for “Grid” graphics (R package version 2.3). <a href="https://CRAN.R-project.org/package=gridExtra" class="uri">https://CRAN.R-project.org/package=gridExtra</a></p>
-<p>Iannone, R., Cheng, J., Schloerke, B., Hughes, E., Lauer, A., Seo, J., Brevoort, K., &amp; Roy, O. (2024). gt: Easily create presentation-ready display tables (R package version 0.11.0). <a href="https://CRAN.R-project.org/package=gt" class="uri">https://CRAN.R-project.org/package=gt</a></p>
-<p>Mock, T. (2023). gtExtras: Extending ‘gt’ for beautiful HTML tables (Version 0.5.0) [R package]. CRAN. <a href="https://CRAN.R-project.org/package=gtExtras" class="uri">https://CRAN.R-project.org/package=gtExtras</a></p>
-<p>Wickham, H. (2016). ggplot2: Elegant graphics for data analysis [R package]. Springer-Verlag. <a href="https://ggplot2.tidyverse.org" class="uri">https://ggplot2.tidyverse.org</a></p>
-<p>Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., &amp; Yutani, H. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686. <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a></p>
-<p>Wickham, H., Vaughan, D., &amp; Girlich, M. (2024). tidyr: Tidy messy data (R package version 1.3.1). <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a></p>
-<p>National Highway Traffic Safety Administration. (2023, June). Traffic safety facts: Motorcycles 2021 data (DOT HS 813 466). U.S. Department of Transportation. <a href="https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813466.pdf" class="uri">https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813466.pdf</a></p>
-<p>U.S. Department of Energy. (2024, January). Average fuel economy by major vehicle category. Alternative Fuels Data Center. <a href="https://afdc.energy.gov/data/10310" class="uri">https://afdc.energy.gov/data/10310</a></p>
-<p>U.S. Environmental Protection Agency. (n.d.). Greenhouse gas emissions from a typical passenger vehicle. EPA. <a href="https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle" class="uri">https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle</a></p>
+<p>R Core Team (2023). <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+<p>Wickham H, François R, Henry L, Müller K, Vaughan D (2023). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 1.1.3, <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
+<p>Lenth R (2024). <em>emmeans: Estimated Marginal Means, aka Least-Squares Means</em>. R package version 1.10.4, <a href="https://CRAN.R-project.org/package=emmeans" class="uri">https://CRAN.R-project.org/package=emmeans</a>.</p>
+<p>H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.</p>
+<p>Iannone R, Cheng J, Schloerke B, Hughes E, Lauer A, Seo J (2024). <em>gt: Easily Create Presentation-Ready Display Tables</em>. R package version 0.10.1, <a href="https://CRAN.R-project.org/package=gt" class="uri">https://CRAN.R-project.org/package=gt</a>.</p>
+<p>Mock T (2023). <em>gtExtras: Extending ‘gt’ for Beautiful HTML Tables</em>. R package version 0.5.0, <a href="https://CRAN.R-project.org/package=gtExtras" class="uri">https://CRAN.R-project.org/package=gtExtras</a>.</p>
+<p>Wickham H, Vaughan D, Girlich M (2023). <em>tidyr: Tidy Messy Data</em>. R package version 1.3.0, <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
+<p>Muldoon, A. (2019, April 15). Custom contrasts in Emmeans. Very statisticious. <a href="https://aosmith.rbind.io/2019/04/15/custom-contrasts-emmeans/" class="uri">https://aosmith.rbind.io/2019/04/15/custom-contrasts-emmeans/</a></p>
+<p>Wikimedia Foundation. (2024, November 5). False discovery rate. Wikipedia. <a href="https://en.wikipedia.org/wiki/False_discovery_rate" class="uri">https://en.wikipedia.org/wiki/False_discovery_rate</a></p>
 
 
 </section>

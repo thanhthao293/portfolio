@@ -7,11 +7,6 @@ output:
   html_document:
     theme: journal
     highlight: haddock
-    df_print: paged
-    toc: true
-    toc_depth: 3
-    toc_float: 
-      collapsed: false
 ---
 
 ```{=html}
@@ -53,7 +48,7 @@ stu <- read.csv("C:/Users/thaon/OneDrive/Miami University/Fall 2024/STA 660/[Pro
 emp <- read.csv("C:/Users/thaon/OneDrive/Miami University/Fall 2024/STA 660/[Project 3] MU Annual Commuting Mileage Estimation/employee_distances_90miles_no_ address.csv")
 ```
 
-### **1. Introduction**
+## **1. Introduction**
 
 Growing impacts of climate change have driven many worldwide companies and organizations to commit to carbon neutrality targets. Miami University (MU) is no exception, having submitted its Miami 2040 Climate Action Plan in May 2024 with the aim of achieving carbon neutrality on its Oxford campus by 2040. This plan builds on over a decade of commitment, as MU has been taking steps to reduce its carbon footprint since 2008.
 
@@ -61,9 +56,9 @@ A significant component of this initiative is reducing emissions generated from 
 
 This project, in line with President Crawford and the University Climate Action Plan, aims to analyze commuting patterns among MU employees and students. By estimating weekly and yearly commuting mileage and gasoline consumption for fiscal year 2023, the project aims to provide actionable insights intro transportation-related emissions at MU and support the institution's broader sustainability goals.
 
-### **2. Methodology**
+## **2. Methodology**
 
-#### **2.1. Data**
+### **2.1. Data**
 
 The project utilizes two datasets, one for students and one for employees, both sourced from an optional survey included with the on-campus parking permit application. This survey is designed to assess commuting patterns based on respondents' home addresses, commute frequency, and the modes of transportation they use.
 
@@ -171,7 +166,7 @@ emp_n <- rescale_pcts(emp_n, 7:14) %>%
   )
 ```
 
-#### **2.2. Statistical Analysis**
+### **2.2. Statistical Analysis**
 
 For estimating commuting mileage, usually, walking is not categorized as commuting, so it will be excluded from the total commuting percentage by subtracting the proportion of walking days from the total commuting days to calculate adjusted commute days per week. When calculating weekly commuting mileage, it's essential to account for the different number of weeks in a term. As such, each individual's commuting frequency in a week will be adjusted using a weighted average of the number of weeks across all terms (Fall, Spring, Summer, and J-term). The weekly commuting mileage for any respondent will then by calculated by multiplying the daily one-way miles traveled by 2, then by the adjusted number of days they commute in a week. To get an yearly estimate, there is no need to adjust for the commuting frequency in a week. It will be calculated as the sum of the number of miles they travel each Fall, Spring, Summer, and J-term semester, which is calculated as the daily one-way miles traveled times 2 times the number of days they travel in a week and times the number of weeks in a semester. There are 30 weeks in the spring-fall term, excluding breaks for Fall, Thanksgiving, and Spring. It is assumed that employees and students commute consistently, including in the final week. The J-term is typically 4 weeks, while the summer term is 12 weeks long. The same procedure applies to both student data and employee data.
 
@@ -183,13 +178,13 @@ To obtain standard errors for the population estimates, a bootstrapping method p
 
 If $k$ is an integer, the bootstrapping procedure is implemented as described. However, if $k$ is not an integer, the nearest integers below and above $k$ are identified, referred to as $k_1$ and $k_2$. Bootstrap populations are created for both $k_1$ and $k_2$, denoted as $N_1$ and $N_2$. During each bootstrapping round, either $N_1$ or $N_2$ is randomly selected as the bootstrap sample, with the selection probability weighted by how close $k$ is to $k_1$ or $k_2$.
 
-#### **2.3. Software**
+### **2.3. Software**
 
 All data analysis tasks were performed using R version 4.3.1, along with additional packages, which are cited in the reference section.
 
-### **3. Results**
+## **3. Results**
 
-#### **3.1. EDA**
+### **3.1. EDA**
 
 First, let's examine the distribution of usage frequency in percentage for each vehicle type. Among students, the data reveals a predominant reliance on gas-powered vehicles, which is expected given that this information is collected during parking permit applications on campus. Interestingly, there is also a notable frequency of students walking a lot to campus, surpassing the usage of other transportation modes such as bicycles, buses, and carpooling.
 
@@ -262,9 +257,9 @@ ggplot(daily_miles, aes(x=daily_miles_one_way, color=DESIGNATION)) +
   theme(plot.title = element_text(face="bold"))
 ```
 
-#### **3.2. Estimate Construction**
+### **3.2. Estimate Construction**
 
-##### **3.2.1 Breakdown of weekly and annual commuting mileage by demographics**
+#### **3.2.1 Breakdown of weekly and annual commuting mileage by demographics**
 
 ```{r}
 # write a function to estimate population standard error
@@ -444,7 +439,7 @@ miles_se %>%
 
 It can be seen that employees generally travel more than students, with weekly travel nearly 10 times greater and yearly travel about 15 times higher. This difference is understandable given that there are approximately 3,937 employees with parking permits compared to 537 off-campus students with parking permits. With around 7 times more employees than students and yet more than 10 times higher travelling distances, it is reasonable to say that employees have higher travel mileage than students do.
 
-##### **3.2.2. Breakdown of weekly and annual commuting gas usage by demographics**
+#### **3.2.2. Breakdown of weekly and annual commuting gas usage by demographics**
 
 ```{r}
 # remove observations where specific breakdown is not known/ambiguous (10 obs)
@@ -679,7 +674,7 @@ gas_co2_se %>%
 
 CO~2~ emission from a gallon of gas is 8,887 grams CO~2~ per gallon. Again, total gas consumption and CO~2~ emissions are higher for employees than for students, reflecting the larger employee population. Employees' weekly gas consumption and CO~2~ emissions are generally about 7 times higher than those of students, while yearly totals are approximately 10 times greater. This disparity is not unusual, as many students do not commute during the summer and J-terms, whereas employees, particularly staff, continue to work during these periods.
 
-##### **3.2.3. Total weekly and annual commuting mileage, gas usage, and CO~2~ emissions for all commuting employees and students**
+#### **3.2.3. Total weekly and annual commuting mileage, gas usage, and CO~2~ emissions for all commuting employees and students**
 
 The following table provides an estimate of commuting mileage, gas usage, and CO~2~ emissions of all employees and students who applied for a parking permit on campus. This information can be compared to prior years' statistics to gain an understanding of how well Miami University is doing on its road to carbon neutrality by 2040.
 
@@ -784,13 +779,13 @@ combined_gas_co2_se %>%
   tab_style(style = list(cell_text(size="20px")), locations = cells_title("title")) 
 ```
 
-### **4. Conclusion**
+## **4. Conclusion**
 
 Estimates of commuting mileage, gasoline consumption, and CO₂ emissions were calculated for Miami University's employees and students, along with specific breakdowns for each group.
 
 However, these estimates are based on several assumptions due to data limitations. For instance, it is assumed that walking is not typically considered a form of commuting, so reported daily one-way miles exclude walking distances. Additionally, only motorcycles and gas-powered vehicles are included in gasoline consumption estimates, as relevant data, like gasoline consumed per miles, is available for these modes, and it is assumed that the focus is on gasoline use for personal vehicles. Consequently, other transportation modes, such as the BCRTA bus or carpooling, are not considered due to complications in estimating their mileage and their non-personal nature.
 
-### **5. References**
+## **5. References**
 
 R Core Team. (2024). R: A language and environment for statistical computing \[R software\]. R Foundation for Statistical Computing. <https://www.R-project.org/>
 
