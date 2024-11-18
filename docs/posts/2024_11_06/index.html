@@ -38,10 +38,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,13 +114,16 @@ window.Quarto = {
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../logo.png" alt="" class="navbar-logo">
     </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Thao Nguyen</span>
+    </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">About</span></a>
@@ -131,8 +136,6 @@ window.Quarto = {
     <a class="nav-link" href="../../Resume.pdf" target="_blank"> 
 <span class="menu-text">Resume</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/thao-nguyen-5b1088219/"> <i class="bi bi-linkedin" role="img">
 </i> 
@@ -146,6 +149,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -291,24 +295,24 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <p>First, let’s examine the average counts of morphological attributes across five replicates for each treatment level. Except for the unexposed control group, most of the 200 cells in each replicate for every treatment exhibits no significant changes in the development of any attributes such as hyphae, pseudohyphae, or buds. The control groups is the only group that demonstrates a remarkably high average of 170 cells developing hypha, much higher than the average of 44 cell counts in the compound B-SA group. The average counts of cells developing pseudohypha are around 30 for the treatments involving compound A, compound A-SA, and the combination of A-SA and B-SA. Regardless of the treatment type, very few cells form buds, and even fewer exhibit multiple attributes simultaneously, such as both hypha and pseudohypha. However, compared to other groups, the treatments with compound A and compound A-SA show a relatively higher occurence of cells developing both hypha and buds at the same time. It is not common to see cells developing multiple hyphae in this case.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="sajmlfdsbs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="moqpfdudfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#sajmlfdsbs table {
+#moqpfdudfi table {
   font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sajmlfdsbs thead, #sajmlfdsbs tbody, #sajmlfdsbs tfoot, #sajmlfdsbs tr, #sajmlfdsbs td, #sajmlfdsbs th {
+#moqpfdudfi thead, #moqpfdudfi tbody, #moqpfdudfi tfoot, #moqpfdudfi tr, #moqpfdudfi td, #moqpfdudfi th {
   border-style: none;
 }
 
-#sajmlfdsbs p {
+#moqpfdudfi p {
   margin: 0;
   padding: 0;
 }
 
-#sajmlfdsbs .gt_table {
+#moqpfdudfi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -334,12 +338,12 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-left-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_caption {
+#moqpfdudfi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sajmlfdsbs .gt_title {
+#moqpfdudfi .gt_title {
   color: #333333;
   font-size: 30px;
   font-weight: bold;
@@ -351,7 +355,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#sajmlfdsbs .gt_subtitle {
+#moqpfdudfi .gt_subtitle {
   color: #333333;
   font-size: 16px;
   font-weight: initial;
@@ -363,7 +367,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#sajmlfdsbs .gt_heading {
+#moqpfdudfi .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -375,13 +379,13 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_bottom_border {
+#moqpfdudfi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_col_headings {
+#moqpfdudfi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: rgba(255, 255, 255, 0);
@@ -396,7 +400,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_col_heading {
+#moqpfdudfi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -416,7 +420,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#sajmlfdsbs .gt_column_spanner_outer {
+#moqpfdudfi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -428,15 +432,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#sajmlfdsbs .gt_column_spanner_outer:first-child {
+#moqpfdudfi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sajmlfdsbs .gt_column_spanner_outer:last-child {
+#moqpfdudfi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sajmlfdsbs .gt_column_spanner {
+#moqpfdudfi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 3px;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -448,11 +452,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   width: 100%;
 }
 
-#sajmlfdsbs .gt_spanner_row {
+#moqpfdudfi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sajmlfdsbs .gt_group_heading {
+#moqpfdudfi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -478,7 +482,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#sajmlfdsbs .gt_empty_group_heading {
+#moqpfdudfi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -493,15 +497,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#sajmlfdsbs .gt_from_md > :first-child {
+#moqpfdudfi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sajmlfdsbs .gt_from_md > :last-child {
+#moqpfdudfi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sajmlfdsbs .gt_row {
+#moqpfdudfi .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -520,7 +524,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#sajmlfdsbs .gt_stub {
+#moqpfdudfi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -533,7 +537,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#sajmlfdsbs .gt_stub_row_group {
+#moqpfdudfi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -547,15 +551,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#sajmlfdsbs .gt_row_group_first td {
+#moqpfdudfi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sajmlfdsbs .gt_row_group_first th {
+#moqpfdudfi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sajmlfdsbs .gt_summary_row {
+#moqpfdudfi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -565,16 +569,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#sajmlfdsbs .gt_first_summary_row {
+#moqpfdudfi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_first_summary_row.thick {
+#moqpfdudfi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sajmlfdsbs .gt_last_summary_row {
+#moqpfdudfi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -584,7 +588,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_grand_summary_row {
+#moqpfdudfi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -594,7 +598,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#sajmlfdsbs .gt_first_grand_summary_row {
+#moqpfdudfi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -604,7 +608,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_last_grand_summary_row_top {
+#moqpfdudfi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -614,11 +618,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_striped {
+#moqpfdudfi .gt_striped {
   background-color: #F5F5F5;
 }
 
-#sajmlfdsbs .gt_table_body {
+#moqpfdudfi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -627,7 +631,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_footnotes {
+#moqpfdudfi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -641,7 +645,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_footnote {
+#moqpfdudfi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -650,7 +654,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#sajmlfdsbs .gt_sourcenotes {
+#moqpfdudfi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -664,7 +668,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#sajmlfdsbs .gt_sourcenote {
+#moqpfdudfi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -672,63 +676,63 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#sajmlfdsbs .gt_left {
+#moqpfdudfi .gt_left {
   text-align: left;
 }
 
-#sajmlfdsbs .gt_center {
+#moqpfdudfi .gt_center {
   text-align: center;
 }
 
-#sajmlfdsbs .gt_right {
+#moqpfdudfi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sajmlfdsbs .gt_font_normal {
+#moqpfdudfi .gt_font_normal {
   font-weight: normal;
 }
 
-#sajmlfdsbs .gt_font_bold {
+#moqpfdudfi .gt_font_bold {
   font-weight: bold;
 }
 
-#sajmlfdsbs .gt_font_italic {
+#moqpfdudfi .gt_font_italic {
   font-style: italic;
 }
 
-#sajmlfdsbs .gt_super {
+#moqpfdudfi .gt_super {
   font-size: 65%;
 }
 
-#sajmlfdsbs .gt_footnote_marks {
+#moqpfdudfi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sajmlfdsbs .gt_asterisk {
+#moqpfdudfi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sajmlfdsbs .gt_indent_1 {
+#moqpfdudfi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sajmlfdsbs .gt_indent_2 {
+#moqpfdudfi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sajmlfdsbs .gt_indent_3 {
+#moqpfdudfi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sajmlfdsbs .gt_indent_4 {
+#moqpfdudfi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sajmlfdsbs .gt_indent_5 {
+#moqpfdudfi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -873,24 +877,24 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <h4 class="anchored" data-anchor-id="any-treatment-will-be-able-to-reduce-hyphae-formation">3.2.1. Any treatment will be able to reduce hyphae formation</h4>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="uggeokctgf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="opgbwjejyd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#uggeokctgf table {
+#opgbwjejyd table {
   font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uggeokctgf thead, #uggeokctgf tbody, #uggeokctgf tfoot, #uggeokctgf tr, #uggeokctgf td, #uggeokctgf th {
+#opgbwjejyd thead, #opgbwjejyd tbody, #opgbwjejyd tfoot, #opgbwjejyd tr, #opgbwjejyd td, #opgbwjejyd th {
   border-style: none;
 }
 
-#uggeokctgf p {
+#opgbwjejyd p {
   margin: 0;
   padding: 0;
 }
 
-#uggeokctgf .gt_table {
+#opgbwjejyd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -916,12 +920,12 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-left-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_caption {
+#opgbwjejyd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uggeokctgf .gt_title {
+#opgbwjejyd .gt_title {
   color: #333333;
   font-size: 30px;
   font-weight: bold;
@@ -933,7 +937,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#uggeokctgf .gt_subtitle {
+#opgbwjejyd .gt_subtitle {
   color: #333333;
   font-size: 16px;
   font-weight: initial;
@@ -945,7 +949,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#uggeokctgf .gt_heading {
+#opgbwjejyd .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -957,13 +961,13 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_bottom_border {
+#opgbwjejyd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_col_headings {
+#opgbwjejyd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: rgba(255, 255, 255, 0);
@@ -978,7 +982,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_col_heading {
+#opgbwjejyd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -998,7 +1002,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#uggeokctgf .gt_column_spanner_outer {
+#opgbwjejyd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1010,15 +1014,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#uggeokctgf .gt_column_spanner_outer:first-child {
+#opgbwjejyd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uggeokctgf .gt_column_spanner_outer:last-child {
+#opgbwjejyd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uggeokctgf .gt_column_spanner {
+#opgbwjejyd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 3px;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -1030,11 +1034,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   width: 100%;
 }
 
-#uggeokctgf .gt_spanner_row {
+#opgbwjejyd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uggeokctgf .gt_group_heading {
+#opgbwjejyd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1060,7 +1064,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#uggeokctgf .gt_empty_group_heading {
+#opgbwjejyd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1075,15 +1079,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#uggeokctgf .gt_from_md > :first-child {
+#opgbwjejyd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uggeokctgf .gt_from_md > :last-child {
+#opgbwjejyd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uggeokctgf .gt_row {
+#opgbwjejyd .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -1102,7 +1106,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#uggeokctgf .gt_stub {
+#opgbwjejyd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1115,7 +1119,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#uggeokctgf .gt_stub_row_group {
+#opgbwjejyd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1129,15 +1133,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#uggeokctgf .gt_row_group_first td {
+#opgbwjejyd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uggeokctgf .gt_row_group_first th {
+#opgbwjejyd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uggeokctgf .gt_summary_row {
+#opgbwjejyd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1147,16 +1151,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#uggeokctgf .gt_first_summary_row {
+#opgbwjejyd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_first_summary_row.thick {
+#opgbwjejyd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uggeokctgf .gt_last_summary_row {
+#opgbwjejyd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1166,7 +1170,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_grand_summary_row {
+#opgbwjejyd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1176,7 +1180,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#uggeokctgf .gt_first_grand_summary_row {
+#opgbwjejyd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1186,7 +1190,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_last_grand_summary_row_top {
+#opgbwjejyd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1196,11 +1200,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_striped {
+#opgbwjejyd .gt_striped {
   background-color: #F5F5F5;
 }
 
-#uggeokctgf .gt_table_body {
+#opgbwjejyd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1209,7 +1213,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_footnotes {
+#opgbwjejyd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1223,7 +1227,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_footnote {
+#opgbwjejyd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1232,7 +1236,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#uggeokctgf .gt_sourcenotes {
+#opgbwjejyd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1246,7 +1250,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#uggeokctgf .gt_sourcenote {
+#opgbwjejyd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1254,63 +1258,63 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#uggeokctgf .gt_left {
+#opgbwjejyd .gt_left {
   text-align: left;
 }
 
-#uggeokctgf .gt_center {
+#opgbwjejyd .gt_center {
   text-align: center;
 }
 
-#uggeokctgf .gt_right {
+#opgbwjejyd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uggeokctgf .gt_font_normal {
+#opgbwjejyd .gt_font_normal {
   font-weight: normal;
 }
 
-#uggeokctgf .gt_font_bold {
+#opgbwjejyd .gt_font_bold {
   font-weight: bold;
 }
 
-#uggeokctgf .gt_font_italic {
+#opgbwjejyd .gt_font_italic {
   font-style: italic;
 }
 
-#uggeokctgf .gt_super {
+#opgbwjejyd .gt_super {
   font-size: 65%;
 }
 
-#uggeokctgf .gt_footnote_marks {
+#opgbwjejyd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uggeokctgf .gt_asterisk {
+#opgbwjejyd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uggeokctgf .gt_indent_1 {
+#opgbwjejyd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uggeokctgf .gt_indent_2 {
+#opgbwjejyd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uggeokctgf .gt_indent_3 {
+#opgbwjejyd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uggeokctgf .gt_indent_4 {
+#opgbwjejyd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uggeokctgf .gt_indent_5 {
+#opgbwjejyd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1372,24 +1376,24 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <h4 class="anchored" data-anchor-id="treaments-involving-compound-a-will-be-better-than-those-involving-compound-b">3.2.2. Treaments involving compound A will be better than those involving compound B</h4>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="himacgmsdi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="iyvadqsjvo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#himacgmsdi table {
+#iyvadqsjvo table {
   font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#himacgmsdi thead, #himacgmsdi tbody, #himacgmsdi tfoot, #himacgmsdi tr, #himacgmsdi td, #himacgmsdi th {
+#iyvadqsjvo thead, #iyvadqsjvo tbody, #iyvadqsjvo tfoot, #iyvadqsjvo tr, #iyvadqsjvo td, #iyvadqsjvo th {
   border-style: none;
 }
 
-#himacgmsdi p {
+#iyvadqsjvo p {
   margin: 0;
   padding: 0;
 }
 
-#himacgmsdi .gt_table {
+#iyvadqsjvo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1415,12 +1419,12 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-left-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_caption {
+#iyvadqsjvo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#himacgmsdi .gt_title {
+#iyvadqsjvo .gt_title {
   color: #333333;
   font-size: 30px;
   font-weight: bold;
@@ -1432,7 +1436,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#himacgmsdi .gt_subtitle {
+#iyvadqsjvo .gt_subtitle {
   color: #333333;
   font-size: 16px;
   font-weight: initial;
@@ -1444,7 +1448,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#himacgmsdi .gt_heading {
+#iyvadqsjvo .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1456,13 +1460,13 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_bottom_border {
+#iyvadqsjvo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_col_headings {
+#iyvadqsjvo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: rgba(255, 255, 255, 0);
@@ -1477,7 +1481,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_col_heading {
+#iyvadqsjvo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1497,7 +1501,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#himacgmsdi .gt_column_spanner_outer {
+#iyvadqsjvo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1509,15 +1513,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#himacgmsdi .gt_column_spanner_outer:first-child {
+#iyvadqsjvo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#himacgmsdi .gt_column_spanner_outer:last-child {
+#iyvadqsjvo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#himacgmsdi .gt_column_spanner {
+#iyvadqsjvo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 3px;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -1529,11 +1533,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   width: 100%;
 }
 
-#himacgmsdi .gt_spanner_row {
+#iyvadqsjvo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#himacgmsdi .gt_group_heading {
+#iyvadqsjvo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1559,7 +1563,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#himacgmsdi .gt_empty_group_heading {
+#iyvadqsjvo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1574,15 +1578,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#himacgmsdi .gt_from_md > :first-child {
+#iyvadqsjvo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#himacgmsdi .gt_from_md > :last-child {
+#iyvadqsjvo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#himacgmsdi .gt_row {
+#iyvadqsjvo .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -1601,7 +1605,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#himacgmsdi .gt_stub {
+#iyvadqsjvo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1614,7 +1618,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#himacgmsdi .gt_stub_row_group {
+#iyvadqsjvo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1628,15 +1632,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#himacgmsdi .gt_row_group_first td {
+#iyvadqsjvo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#himacgmsdi .gt_row_group_first th {
+#iyvadqsjvo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#himacgmsdi .gt_summary_row {
+#iyvadqsjvo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1646,16 +1650,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#himacgmsdi .gt_first_summary_row {
+#iyvadqsjvo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_first_summary_row.thick {
+#iyvadqsjvo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#himacgmsdi .gt_last_summary_row {
+#iyvadqsjvo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1665,7 +1669,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_grand_summary_row {
+#iyvadqsjvo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1675,7 +1679,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#himacgmsdi .gt_first_grand_summary_row {
+#iyvadqsjvo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1685,7 +1689,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_last_grand_summary_row_top {
+#iyvadqsjvo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1695,11 +1699,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_striped {
+#iyvadqsjvo .gt_striped {
   background-color: #F5F5F5;
 }
 
-#himacgmsdi .gt_table_body {
+#iyvadqsjvo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1708,7 +1712,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_footnotes {
+#iyvadqsjvo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1722,7 +1726,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_footnote {
+#iyvadqsjvo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1731,7 +1735,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#himacgmsdi .gt_sourcenotes {
+#iyvadqsjvo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1745,7 +1749,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#himacgmsdi .gt_sourcenote {
+#iyvadqsjvo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1753,63 +1757,63 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#himacgmsdi .gt_left {
+#iyvadqsjvo .gt_left {
   text-align: left;
 }
 
-#himacgmsdi .gt_center {
+#iyvadqsjvo .gt_center {
   text-align: center;
 }
 
-#himacgmsdi .gt_right {
+#iyvadqsjvo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#himacgmsdi .gt_font_normal {
+#iyvadqsjvo .gt_font_normal {
   font-weight: normal;
 }
 
-#himacgmsdi .gt_font_bold {
+#iyvadqsjvo .gt_font_bold {
   font-weight: bold;
 }
 
-#himacgmsdi .gt_font_italic {
+#iyvadqsjvo .gt_font_italic {
   font-style: italic;
 }
 
-#himacgmsdi .gt_super {
+#iyvadqsjvo .gt_super {
   font-size: 65%;
 }
 
-#himacgmsdi .gt_footnote_marks {
+#iyvadqsjvo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#himacgmsdi .gt_asterisk {
+#iyvadqsjvo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#himacgmsdi .gt_indent_1 {
+#iyvadqsjvo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#himacgmsdi .gt_indent_2 {
+#iyvadqsjvo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#himacgmsdi .gt_indent_3 {
+#iyvadqsjvo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#himacgmsdi .gt_indent_4 {
+#iyvadqsjvo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#himacgmsdi .gt_indent_5 {
+#iyvadqsjvo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1841,24 +1845,24 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <h4 class="anchored" data-anchor-id="the-0.2-micron-filtered-aloe-arborescens-treatment-will-be-the-most-effective-at-reducing-hyphae-formation">3.2.3. The 0.2 micron filtered Aloe arborescens treatment will be the most effective at reducing hyphae formation</h4>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="ohrsmfnmpk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="stkmkfqeyb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#ohrsmfnmpk table {
+#stkmkfqeyb table {
   font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ohrsmfnmpk thead, #ohrsmfnmpk tbody, #ohrsmfnmpk tfoot, #ohrsmfnmpk tr, #ohrsmfnmpk td, #ohrsmfnmpk th {
+#stkmkfqeyb thead, #stkmkfqeyb tbody, #stkmkfqeyb tfoot, #stkmkfqeyb tr, #stkmkfqeyb td, #stkmkfqeyb th {
   border-style: none;
 }
 
-#ohrsmfnmpk p {
+#stkmkfqeyb p {
   margin: 0;
   padding: 0;
 }
 
-#ohrsmfnmpk .gt_table {
+#stkmkfqeyb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1884,12 +1888,12 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-left-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_caption {
+#stkmkfqeyb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ohrsmfnmpk .gt_title {
+#stkmkfqeyb .gt_title {
   color: #333333;
   font-size: 30px;
   font-weight: bold;
@@ -1901,7 +1905,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#ohrsmfnmpk .gt_subtitle {
+#stkmkfqeyb .gt_subtitle {
   color: #333333;
   font-size: 16px;
   font-weight: initial;
@@ -1913,7 +1917,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#ohrsmfnmpk .gt_heading {
+#stkmkfqeyb .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1925,13 +1929,13 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_bottom_border {
+#stkmkfqeyb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_col_headings {
+#stkmkfqeyb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 3px;
   border-top-color: rgba(255, 255, 255, 0);
@@ -1946,7 +1950,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_col_heading {
+#stkmkfqeyb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1966,7 +1970,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#ohrsmfnmpk .gt_column_spanner_outer {
+#stkmkfqeyb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1978,15 +1982,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#ohrsmfnmpk .gt_column_spanner_outer:first-child {
+#stkmkfqeyb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ohrsmfnmpk .gt_column_spanner_outer:last-child {
+#stkmkfqeyb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ohrsmfnmpk .gt_column_spanner {
+#stkmkfqeyb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 3px;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -1998,11 +2002,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   width: 100%;
 }
 
-#ohrsmfnmpk .gt_spanner_row {
+#stkmkfqeyb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ohrsmfnmpk .gt_group_heading {
+#stkmkfqeyb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2028,7 +2032,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#ohrsmfnmpk .gt_empty_group_heading {
+#stkmkfqeyb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2043,15 +2047,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#ohrsmfnmpk .gt_from_md > :first-child {
+#stkmkfqeyb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ohrsmfnmpk .gt_from_md > :last-child {
+#stkmkfqeyb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ohrsmfnmpk .gt_row {
+#stkmkfqeyb .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -2070,7 +2074,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#ohrsmfnmpk .gt_stub {
+#stkmkfqeyb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2083,7 +2087,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ohrsmfnmpk .gt_stub_row_group {
+#stkmkfqeyb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2097,15 +2101,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#ohrsmfnmpk .gt_row_group_first td {
+#stkmkfqeyb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ohrsmfnmpk .gt_row_group_first th {
+#stkmkfqeyb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ohrsmfnmpk .gt_summary_row {
+#stkmkfqeyb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2115,16 +2119,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ohrsmfnmpk .gt_first_summary_row {
+#stkmkfqeyb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_first_summary_row.thick {
+#stkmkfqeyb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ohrsmfnmpk .gt_last_summary_row {
+#stkmkfqeyb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2134,7 +2138,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_grand_summary_row {
+#stkmkfqeyb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2144,7 +2148,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ohrsmfnmpk .gt_first_grand_summary_row {
+#stkmkfqeyb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2154,7 +2158,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_last_grand_summary_row_top {
+#stkmkfqeyb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2164,11 +2168,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_striped {
+#stkmkfqeyb .gt_striped {
   background-color: #F5F5F5;
 }
 
-#ohrsmfnmpk .gt_table_body {
+#stkmkfqeyb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2177,7 +2181,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_footnotes {
+#stkmkfqeyb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2191,7 +2195,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_footnote {
+#stkmkfqeyb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2200,7 +2204,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ohrsmfnmpk .gt_sourcenotes {
+#stkmkfqeyb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2214,7 +2218,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ohrsmfnmpk .gt_sourcenote {
+#stkmkfqeyb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2222,63 +2226,63 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ohrsmfnmpk .gt_left {
+#stkmkfqeyb .gt_left {
   text-align: left;
 }
 
-#ohrsmfnmpk .gt_center {
+#stkmkfqeyb .gt_center {
   text-align: center;
 }
 
-#ohrsmfnmpk .gt_right {
+#stkmkfqeyb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ohrsmfnmpk .gt_font_normal {
+#stkmkfqeyb .gt_font_normal {
   font-weight: normal;
 }
 
-#ohrsmfnmpk .gt_font_bold {
+#stkmkfqeyb .gt_font_bold {
   font-weight: bold;
 }
 
-#ohrsmfnmpk .gt_font_italic {
+#stkmkfqeyb .gt_font_italic {
   font-style: italic;
 }
 
-#ohrsmfnmpk .gt_super {
+#stkmkfqeyb .gt_super {
   font-size: 65%;
 }
 
-#ohrsmfnmpk .gt_footnote_marks {
+#stkmkfqeyb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ohrsmfnmpk .gt_asterisk {
+#stkmkfqeyb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ohrsmfnmpk .gt_indent_1 {
+#stkmkfqeyb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ohrsmfnmpk .gt_indent_2 {
+#stkmkfqeyb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ohrsmfnmpk .gt_indent_3 {
+#stkmkfqeyb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ohrsmfnmpk .gt_indent_4 {
+#stkmkfqeyb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ohrsmfnmpk .gt_indent_5 {
+#stkmkfqeyb .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2375,6 +2379,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

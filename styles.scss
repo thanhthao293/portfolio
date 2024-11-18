@@ -5,12 +5,13 @@ $seasalt: #F9F7F7;
 $snow: #FAF3F3;
 $puce: #DA7F8F;
 $columbia-blue: #B9D7EA;
+$uranian-blue: #BBE1FA;
 
 // base document colors
-$navbar-bg: $columbia-blue; // navbar
+$navbar-bg: $uranian-blue; // navbar
 $navbar-fg: $snow; // navbar foreground elements
 $navbar-hl: $puce; // highlight color when hovering over navbar links
-$footer-bg: $columbia-blue; // footer background color
+$footer-bg: $uranian-blue; // footer background color
 $footer-fg: $snow; // footer foreground elements' color
 $page-bg: $snow;
 
@@ -23,4 +24,6 @@ $code-color: $puce; // inline code text color
   max-height: 40px;
   width: auto;
 }
+
+
 
