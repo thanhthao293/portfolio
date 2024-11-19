@@ -6,9 +6,9 @@ website:
   title: "Thao Nguyen"
   favicon: logo.png
   navbar:
-    title: false
+    title: "Thao Nguyen"
     logo: logo.png
-    left:
+    right: 
       - text: "About"
         href: index.qmd
       - text: "Explore"
@@ -16,7 +16,6 @@ website:
       - text: "Resume"
         href: Resume.pdf
         target: _blank
-    right: 
       - icon: linkedin
         href: https://www.linkedin.com/in/thao-nguyen-5b1088219/
       - icon: github
@@ -28,8 +27,8 @@ website:
 format:
   html:
     theme: 
-      - journal
-      - styles.scss
+      light: [journal, styles.scss]
+      dark: [journal, dark-theme.scss]
     toc: true
     toc-title: Table of Contents
     toc-location: left
