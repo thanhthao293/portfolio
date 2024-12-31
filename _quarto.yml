@@ -3,8 +3,6 @@ project:
   output-dir: docs
 
 website:
-  title: "Thao Nguyen"
-  favicon: logo.png
   navbar:
     title: "Thao Nguyen"
     logo: logo.png
