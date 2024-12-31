@@ -5,7 +5,6 @@ project:
 website:
   navbar:
     title: "Thao Nguyen"
-    logo: logo.png
     right: 
       - text: "About"
         href: index.qmd
