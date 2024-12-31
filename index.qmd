@@ -1,4 +1,5 @@
 ---
+title: "Home"
 image: temporary home photo.jpg
 about:
   template: jolla

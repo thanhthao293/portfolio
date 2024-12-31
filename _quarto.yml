@@ -6,7 +6,7 @@ website:
   navbar:
     title: "Thao Nguyen"
     right: 
-      - text: "About"
+      - text: "Home"
         href: index.qmd
       - text: "Explore"
         href: explore.qmd
