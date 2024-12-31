@@ -6,10 +6,6 @@ website:
   title: "Thao Nguyen"
   favicon: logo.png
   navbar:
-<<<<<<< HEAD
-    title: false
-    right:
-=======
     title: "Thao Nguyen"
     logo: logo.png
     right: 
