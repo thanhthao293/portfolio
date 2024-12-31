@@ -1,26 +1,21 @@
 /*-- scss:defaults --*/
 
 // colors
+$air-superiority-blue: #7FA1C3;
 $seasalt: #F9F7F7;
 $snow: #FAF3F3;
 $puce: #DA7F8F;
 $columbia-blue: #B9D7EA;
 
 // base document colors
-$navbar-bg: $columbia-blue; // navbar
+$navbar-bg: $air-superiority-blue; // navbar
 $navbar-fg: $snow; // navbar foreground elements
 $navbar-hl: $puce; // highlight color when hovering over navbar links
-$footer-bg: $columbia-blue; // footer background color
+$footer-bg: $air-superiority-blue; // footer background color
 $footer-fg: $snow; // footer foreground elements' color
 $page-bg: $snow;
 
 // inline code
 $code-bg: $seasalt; // inline code background color
 $code-color: $puce; // inline code text color
-
-/*-- scss:rules --*/
-.navbar-brand img {
-  max-height: 40px;
-  width: auto;
-}
 
