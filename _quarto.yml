@@ -4,7 +4,6 @@ project:
 
 website:
   navbar:
-    title: "Thao Nguyen" 
     right: 
       - text: "Home"
         href: index.qmd
