@@ -9,7 +9,6 @@ website:
     title: "Thao Nguyen"
     logo: logo.png
     right: 
->>>>>>> 34eed24d1a861ed8bbd8afe702ad1789ba70ada9
       - text: "About"
         href: index.qmd
       - text: "Explore"
