@@ -29,7 +29,6 @@ h4.author {
 
 </style>
 ```
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.align="center")
 ```
@@ -779,7 +778,7 @@ combined_gas_co2_se %>%
 
 Estimates of commuting mileage, gasoline consumption, and CO₂ emissions were calculated for Miami University's employees and students, along with specific breakdowns for each group.
 
-However, these estimates are based on several assumptions due to data limitations. For instance, it is assumed that walking is not typically considered a form of commuting, so reported daily one-way miles exclude walking distances. Additionally, only motorcycles and gas-powered vehicles are included in gasoline consumption estimates, as relevant data, like gasoline consumed per miles, is available for these modes, and it is assumed that the focus is on gasoline use for personal vehicles. Consequently, other transportation modes, such as the BCRTA bus or carpooling, are not considered due to complications in estimating their mileage and their non-personal nature. Finally, a major caveat with this data is that it comes from an optional, non-random survey, raising questions about what population it truly represents. While the sample size is large, it does not necessarily reflect the characteristics of the overall commuting population. Consequently, any estimation method — no matter how rigorous — is inherently speculative because the underlying data does not provide a valid basis for inference about the broader population. 
+However, these estimates are based on several assumptions due to data limitations. For instance, it is assumed that walking is not typically considered a form of commuting, so reported daily one-way miles exclude walking distances. Additionally, only motorcycles and gas-powered vehicles are included in gasoline consumption estimates, as relevant data, like gasoline consumed per miles, is available for these modes, and it is assumed that the focus is on gasoline use for personal vehicles. Consequently, other transportation modes, such as the BCRTA bus or carpooling, are not considered due to complications in estimating their mileage and their non-personal nature. Finally, a major caveat with this data is that it comes from an optional, non-random survey, raising questions about what population it truly represents. While the sample size is large, it does not necessarily reflect the characteristics of the overall commuting population. Consequently, any estimation method — no matter how rigorous — is inherently speculative because the underlying data does not provide a valid basis for inference about the broader population.
 
 ## **5. References**
 

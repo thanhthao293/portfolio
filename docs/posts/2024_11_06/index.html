@@ -194,7 +194,7 @@ window.Quarto = {
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology"><strong>2. Methodology</strong></a>
   <ul class="collapse">
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><strong>2.1. Data</strong></a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><strong>2.2. Analysis</strong></a></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis"><strong>2.2. Statistical Analysis</strong></a></li>
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software"><strong>2.3. Software</strong></a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>3. Results</strong></a>
@@ -233,7 +233,7 @@ h4.author {
 </style>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction"><strong>1. Introduction</strong></h2>
-<p>The limited availability of safe and effective antifungal treatments makes the exploration of new compounds essential in combating fungal infections. <em>Candida albicans</em> is an opportunistic fungus known for its ability to switch between different forms, particularly from a yeast (single-cell) form to filamentous forms like hyphea and pseudohyphae, which enhance its invasiveness and virulence. This project aims to determine whether chemical compounds isolated from <em>Aloe arborescens</em> can inhibit the germination of <em>C. albicans</em> and reduce the formation of hyphae.</p>
+<p>The limited availability of safe and effective antifungal treatments makes the exploration of new compounds essential in combating fungal infections. <em>Candida albicans</em> is an opportunistic fungus known for its ability to switch between different forms, particularly from a yeast (single-cell) form to filamentous forms like hyphea and pseudohyphae, which enhances its invasiveness and virulence. This project aims to determine whether chemical compounds isolated from <em>Aloe arborescens</em> can inhibit the germination of <em>C. albicans</em> and reduce the formation of hyphae.</p>
 <p>To investigate this, researchers conducted morphogenesis assays, exposing a strain of <em>C. albicans</em> to seven treatments, including a 0.2-micron filtered <em>Aloe arborescens</em> extract, isolated compounds ‘A’ and ‘B,’ their commercial versions from Sigma-Aldrich (‘A-SA’ and ‘B-SA’), and combinations of these compounds. In each treatment, 200 cells were observed in five replicates, and their forms were categorized based on the presence of hyphae (denoted GT), buds, or pseudohyphae (denoted PH).</p>
 <p>The primary hypotheses for this research are: (1) exposure to any of the seven treatments will significantly inhibit fungal germination and reduce hyphae formation; (2) treatments involving compound ‘A’ will be more effective than those involving compound ‘B’; and (3) the 0.2-milcron filtered <em>Aloe arborescens</em> extract will show the greatest reduction in hyphae formation compared to the other treatments.</p>
 <p>The findings from this study could have important future implications for antimycotic treatments, potentially identifying new antifungal agents that can improve the options available for treating fungal infections.</p>
@@ -259,25 +259,25 @@ h4.author {
 <p>For modelling purposes, an additional variable to be used as a response variable, called <code>GT_total</code>, was created. This variable sums the total number of cells that exhibit any form of hyphae for each treatment replicate, whether as a standalone effect or in combination with other morphologies.</p>
 <p>With this, the final dataset has 40 observations and 13 variables.</p>
 </section>
-<section id="analysis" class="level3">
-<h3 class="anchored" data-anchor-id="analysis"><strong>2.2. Analysis</strong></h3>
-<p>As the distribution of cells forming hyphae is not normally distributed, a Poisson generalized linear model (GLM) with an offset of 200, <span class="math inline">\(log(200)\)</span>, was modeled and has the following formula:</p>
+<section id="statistical-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-analysis"><strong>2.2. Statistical Analysis</strong></h3>
+<p>As the distribution of cells forming hyphae is not normally distributed, a Negative Binomial generalized linear model (GLM) with an offset of 200, <span class="math inline">\(log(200)\)</span>, was modeled and has the following formula:</p>
 <p><span class="math display">\[
-log(X_{ij}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}\,+\,log(200);\,i = 1, 2, ..., 7;\,j = 1, 2, ..., 5
+log(X_{ij}) = \beta_0 + \beta_1 \times I(\text{trt}_1 = \text{Whole}) + \beta_2 \times I(\text{trt}_2 = \text{A}) + \ldots + \beta_7 \times I(\text{trt}_7 = \text{A-SA and B-SA}) \,+\,log(200)
 \]</span></p>
-<p>where <span class="math inline">\(X_{ij}\)</span> is the number of cells developing hyphae for the <span class="math inline">\(i^{th}\)</span> treatment and <span class="math inline">\(j^{th}\)</span> replicate.</p>
-<p>The motivation behind including an offset is that there is an upper limit of 200 cells for each treatment replicate, so the response variable is constrained and cannot increase indefintely. The Poisson distribution, however, assumes that counts can range from zero to infinity, which is problematic when there is actually an upper bound in existence. When counts become constrained near this upper limit, the distribution may become skewed, violating the assumptions of standard count models like the Poisson, which typically assume constant or proportional variance across all levels of the predictor variables.</p>
+<p>where <span class="math inline">\(I(\text{trt}_i = i)\)</span> is an indicator function that has a value of 1 if it is a particular treatment <span class="math inline">\(i\)</span> and otherwise has a value of 0 if it is not. <span class="math inline">\(j \in \{1, \ldots, 5\}\)</span> represents the replicate number.</p>
+<p>The motivation behind including an offset is that there is an upper limit of 200 cells for each treatment replicate, so the response variable is constrained and cannot increase indefinitely. The Negative Binomial distribution, however, assumes that counts can range from zero to infinity, which is problematic when there is actually an upper bound in existence. When counts become constrained near this upper limit, the distribution may become skewed, violating the assumptions of standard count models like the Poisson, which typically assume constant or proportional variance across all levels of the predictor variables.</p>
 <p>By introducing an offset, the maximum possible count of 200 is adjusted, which ensures that the response variable stays within a reasonable range. Mathematically, if the term is moved to the left side of the equation above, the left side becomes:</p>
 <p><span class="math display">\[
 log(X_{ij}) - log(200) = log(\frac{X_{ij}}{200})
 \]</span></p>
-<p>This effectively models the logarithm of the proportion of cells forming hyphae relative to the upper bound (200). As a result, the response variable is now constrained to a bounded range between 0 and 1, which is more appopriate when the counts have an upper limit. Thus, the formula for the Poisson GLM with offset can be written as:</p>
+<p>This effectively models the logarithm of the proportion of cells forming hyphae relative to the upper bound (200). As a result, the response variable is now constrained to a bounded range between 0 and 1, which is more appropriate when the counts have an upper limit. Thus, the formula for the Negative Binomial GLM with offset can be written as:</p>
 <p><span class="math display">\[
-log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
+log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times I(\text{trt}_1 = \text{Whole}) + \beta_2 \times I(\text{trt}_2 = \text{A}) + \ldots + \beta_7 \times I(\text{trt}_7 = \text{A-SA and B-SA}) \,+\,log(200)
 \]</span></p>
-<p>Since the response variable is now the logarithm of the proportion of hyphae-forming cells (i.e., the number of hyphae-forming cells divided by the total cell count of 200 for each treatment replicate), comparisons between any two treatment groups will be the logarithm of the ratio of these proportions. Specifically, for two treatment groups, the difference in their log-transformed proportions represents the log of the ratio between the proportion of hyphae-forming cells in one treatment group relative to the proportion in the other.</p>
-<p>In Section 3.2, where comparisons are made, the ratio between the two treatment groups is obtained by exponentiating this logarithmic difference. This exponentiation restores the scale of the data back to a ratio of the proportions, which allows for a direct comparison of the relative effectiveness of the two treatments in promoting hyphae formation.</p>
-<p>Additionally, to answer the research questions, custom contrasts were applied to compare each pair of treatment groups. When multiple contrasts were tested simultaneously, the Benjamini-Hochberg procedure was used to adjust for the potential inflation of Type I error due to the multiple contrasts. All statistical tests were conducted at a significance level of 0.05.</p>
+<p>It is worth noting that an alternative to the Negative Binomial GLM is a Poisson GLM when working with count data. However, in the case of the provided data, the variance of the <code>GT_total</code> variable (2498.574) is much higher than the mean (44.2). This overdispersion violates a key assumption of the Poisson distribution, which requires the mean and variance to be equal, making the Poisson GLM inappropriate for this analysis. To correct for overdispersion, a quasi-Poisson GLM can be used here, but its lack of a log-likelihood makes it impossible to use any of the likelihood-based tools. As such, a Negative Binomial GLM would be preferred.</p>
+<p>Since the response variable is now the logarithm of the proportion of hyphae-forming cells (i.e., the number of hyphae-forming cells divided by the total cell count of 200 for each treatment replicate), comparisons between any two treatment groups will be the logarithm of the ratio of these proportions. Specifically, for two treatment groups, the difference in their log-transformed proportions represents the log of the ratio between the proportion of hyphae-forming cells in one treatment group relative to the proportion in the other. When comparisons are made, the ratio between the two treatment groups is obtained by exponentiating this logarithmic difference. This exponentiation restores the scale of the data back to a ratio of the proportions, which allows for a direct comparison of the relative effectiveness of the two treatments in promoting hyphae formation.</p>
+<p>Additionally, to answer the research questions, custom contrasts were applied to compare each pair of treatment groups. When multiple contrasts were tested simultaneously, the Benjamini-Hochberg procedure was used to adjust for the potential inflation of Type I error due to multiple contrasts. All statistical tests were conducted at a significance level of 0.05.</p>
 </section>
 <section id="software" class="level3">
 <h3 class="anchored" data-anchor-id="software"><strong>2.3. Software</strong></h3>
@@ -291,58 +291,58 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <p>First, let’s examine the average counts of morphological attributes across five replicates for each treatment level. Except for the unexposed control group, most of the 200 cells in each replicate for every treatment exhibits no significant changes in the development of any attributes such as hyphae, pseudohyphae, or buds. The control groups is the only group that demonstrates a remarkably high average of 170 cells developing hypha, much higher than the average of 44 cell counts in the compound B-SA group. The average counts of cells developing pseudohypha are around 30 for the treatments involving compound A, compound A-SA, and the combination of A-SA and B-SA. Regardless of the treatment type, very few cells form buds, and even fewer exhibit multiple attributes simultaneously, such as both hypha and pseudohypha. However, compared to other groups, the treatments with compound A and compound A-SA show a relatively higher occurence of cells developing both hypha and buds at the same time. It is not common to see cells developing multiple hyphae in this case.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="ypcmdnkwdh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#ypcmdnkwdh table {
-  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+<div id="zzktwludaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#zzktwludaa table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ypcmdnkwdh thead, #ypcmdnkwdh tbody, #ypcmdnkwdh tfoot, #ypcmdnkwdh tr, #ypcmdnkwdh td, #ypcmdnkwdh th {
+#zzktwludaa thead, #zzktwludaa tbody, #zzktwludaa tfoot, #zzktwludaa tr, #zzktwludaa td, #zzktwludaa th {
   border-style: none;
 }
 
-#ypcmdnkwdh p {
+#zzktwludaa p {
   margin: 0;
   padding: 0;
 }
 
-#ypcmdnkwdh .gt_table {
+#zzktwludaa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
   width: auto;
   border-top-style: solid;
   border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #FFFFFF;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D3D3D3;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_caption {
+#zzktwludaa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ypcmdnkwdh .gt_title {
+#zzktwludaa .gt_title {
   color: #333333;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -351,9 +351,9 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#ypcmdnkwdh .gt_subtitle {
+#zzktwludaa .gt_subtitle {
   color: #333333;
-  font-size: 16px;
+  font-size: 85%;
   font-weight: initial;
   padding-top: 3px;
   padding-bottom: 5px;
@@ -363,7 +363,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#ypcmdnkwdh .gt_heading {
+#zzktwludaa .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -375,19 +375,19 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_bottom_border {
+#zzktwludaa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_col_headings {
+#zzktwludaa .gt_col_headings {
   border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -396,7 +396,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_col_heading {
+#zzktwludaa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -409,14 +409,14 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 6px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#ypcmdnkwdh .gt_column_spanner_outer {
+#zzktwludaa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -428,31 +428,31 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#ypcmdnkwdh .gt_column_spanner_outer:first-child {
+#zzktwludaa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ypcmdnkwdh .gt_column_spanner_outer:last-child {
+#zzktwludaa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ypcmdnkwdh .gt_column_spanner {
+#zzktwludaa .gt_column_spanner {
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#ypcmdnkwdh .gt_spanner_row {
+#zzktwludaa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ypcmdnkwdh .gt_group_heading {
+#zzktwludaa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -478,7 +478,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#ypcmdnkwdh .gt_empty_group_heading {
+#zzktwludaa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -493,23 +493,23 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#ypcmdnkwdh .gt_from_md > :first-child {
+#zzktwludaa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ypcmdnkwdh .gt_from_md > :last-child {
+#zzktwludaa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ypcmdnkwdh .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
+#zzktwludaa .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #F6F7F7;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -520,7 +520,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#ypcmdnkwdh .gt_stub {
+#zzktwludaa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -533,7 +533,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ypcmdnkwdh .gt_stub_row_group {
+#zzktwludaa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -547,15 +547,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#ypcmdnkwdh .gt_row_group_first td {
+#zzktwludaa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ypcmdnkwdh .gt_row_group_first th {
+#zzktwludaa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ypcmdnkwdh .gt_summary_row {
+#zzktwludaa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -565,16 +565,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ypcmdnkwdh .gt_first_summary_row {
+#zzktwludaa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_first_summary_row.thick {
+#zzktwludaa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ypcmdnkwdh .gt_last_summary_row {
+#zzktwludaa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -584,7 +584,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_grand_summary_row {
+#zzktwludaa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -594,7 +594,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ypcmdnkwdh .gt_first_grand_summary_row {
+#zzktwludaa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -604,7 +604,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_last_grand_summary_row_top {
+#zzktwludaa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -614,11 +614,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_striped {
-  background-color: #F5F5F5;
+#zzktwludaa .gt_striped {
+  background-color: #FAFAFA;
 }
 
-#ypcmdnkwdh .gt_table_body {
+#zzktwludaa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -627,7 +627,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_footnotes {
+#zzktwludaa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -641,7 +641,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_footnote {
+#zzktwludaa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -650,7 +650,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#ypcmdnkwdh .gt_sourcenotes {
+#zzktwludaa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -664,71 +664,71 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#ypcmdnkwdh .gt_sourcenote {
-  font-size: 90%;
+#zzktwludaa .gt_sourcenote {
+  font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#ypcmdnkwdh .gt_left {
+#zzktwludaa .gt_left {
   text-align: left;
 }
 
-#ypcmdnkwdh .gt_center {
+#zzktwludaa .gt_center {
   text-align: center;
 }
 
-#ypcmdnkwdh .gt_right {
+#zzktwludaa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ypcmdnkwdh .gt_font_normal {
+#zzktwludaa .gt_font_normal {
   font-weight: normal;
 }
 
-#ypcmdnkwdh .gt_font_bold {
+#zzktwludaa .gt_font_bold {
   font-weight: bold;
 }
 
-#ypcmdnkwdh .gt_font_italic {
+#zzktwludaa .gt_font_italic {
   font-style: italic;
 }
 
-#ypcmdnkwdh .gt_super {
+#zzktwludaa .gt_super {
   font-size: 65%;
 }
 
-#ypcmdnkwdh .gt_footnote_marks {
+#zzktwludaa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ypcmdnkwdh .gt_asterisk {
+#zzktwludaa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ypcmdnkwdh .gt_indent_1 {
+#zzktwludaa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ypcmdnkwdh .gt_indent_2 {
+#zzktwludaa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ypcmdnkwdh .gt_indent_3 {
+#zzktwludaa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ypcmdnkwdh .gt_indent_4 {
+#zzktwludaa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ypcmdnkwdh .gt_indent_5 {
+#zzktwludaa .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -738,14 +738,14 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <thead>
 <tr class="header gt_col_headings">
 <th class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
-<th id="No Change" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">No Change</th>
-<th id="GT Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">GT Only</th>
-<th id="PH Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">PH Only</th>
-<th id="Buds Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Buds Only</th>
-<th id="GT &amp;amp; PH" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">GT &amp; PH</th>
-<th id="GT &amp;amp; Buds" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">GT &amp; Buds</th>
-<th id="PH &amp;amp; Buds" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">PH &amp; Buds</th>
-<th id="Multi GT" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Multi GT</th>
+<th id="No Change" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">No Change</th>
+<th id="GT Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">GT Only</th>
+<th id="PH Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">PH Only</th>
+<th id="Buds Only" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Buds Only</th>
+<th id="GT &amp;amp; PH" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">GT &amp; PH</th>
+<th id="GT &amp;amp; Buds" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">GT &amp; Buds</th>
+<th id="PH &amp;amp; Buds" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">PH &amp; Buds</th>
+<th id="Multi GT" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Multi GT</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -848,20 +848,18 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig1-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption>Figure 1. Distribution of cell morphology counts by treatment (black points represent the average count for each treatment</figcaption>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Figure 1 shows that the control group exhibits a high number of cells forming hyphae, while the treatment groups display significantly fewer hyphae formations. This suggests that the treatments are effective in reducing hyphae development. Compounds A, B, A-SA, and B-SA appear similarly effective, although compound B-SA is slightly less effective. However, it is challenging to determine from this plot whether treatments with compound A are more effective than those with compound B in reducing hyphae formation. The whole Aloe arborescens extract seems to be the most effective at reducing hyphae development.</p>
-<p>Examining the distribution of cells forming hyphae shows a right-skewed pattern. Consequently, tests assuming normality, such as one-way ANOVA, may not be suitable. Therefore, alternative methods for modeling the treatment effect on the total number of cells forming hyphae should be explored.</p>
+<p>The distribution of cells forming hyphae is examined in figure 2. It shows a right-skewed pattern. Consequently, tests assuming normality, such as one-way ANOVA, may not be suitable. Therefore, alternative methods for modeling the treatment effect on the total number of cells forming hyphae should be explored.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Figure 2. Distribution of hyphae-forming cells by treatment replicate</figcaption>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -873,58 +871,58 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <h4 class="anchored" data-anchor-id="any-treatment-will-be-able-to-reduce-hyphae-formation">3.2.1. Any treatment will be able to reduce hyphae formation</h4>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fnlerzhshu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#fnlerzhshu table {
-  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+<div id="brhpjzzokl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#brhpjzzokl table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fnlerzhshu thead, #fnlerzhshu tbody, #fnlerzhshu tfoot, #fnlerzhshu tr, #fnlerzhshu td, #fnlerzhshu th {
+#brhpjzzokl thead, #brhpjzzokl tbody, #brhpjzzokl tfoot, #brhpjzzokl tr, #brhpjzzokl td, #brhpjzzokl th {
   border-style: none;
 }
 
-#fnlerzhshu p {
+#brhpjzzokl p {
   margin: 0;
   padding: 0;
 }
 
-#fnlerzhshu .gt_table {
+#brhpjzzokl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
   width: auto;
   border-top-style: solid;
   border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #FFFFFF;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D3D3D3;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_caption {
+#brhpjzzokl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fnlerzhshu .gt_title {
+#brhpjzzokl .gt_title {
   color: #333333;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -933,9 +931,9 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#fnlerzhshu .gt_subtitle {
+#brhpjzzokl .gt_subtitle {
   color: #333333;
-  font-size: 16px;
+  font-size: 85%;
   font-weight: initial;
   padding-top: 3px;
   padding-bottom: 5px;
@@ -945,7 +943,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#fnlerzhshu .gt_heading {
+#brhpjzzokl .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -957,19 +955,19 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_bottom_border {
+#brhpjzzokl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_col_headings {
+#brhpjzzokl .gt_col_headings {
   border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -978,7 +976,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_col_heading {
+#brhpjzzokl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -991,14 +989,14 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 6px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#fnlerzhshu .gt_column_spanner_outer {
+#brhpjzzokl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1010,31 +1008,31 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#fnlerzhshu .gt_column_spanner_outer:first-child {
+#brhpjzzokl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fnlerzhshu .gt_column_spanner_outer:last-child {
+#brhpjzzokl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fnlerzhshu .gt_column_spanner {
+#brhpjzzokl .gt_column_spanner {
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#fnlerzhshu .gt_spanner_row {
+#brhpjzzokl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fnlerzhshu .gt_group_heading {
+#brhpjzzokl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1060,7 +1058,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#fnlerzhshu .gt_empty_group_heading {
+#brhpjzzokl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1075,23 +1073,23 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#fnlerzhshu .gt_from_md > :first-child {
+#brhpjzzokl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fnlerzhshu .gt_from_md > :last-child {
+#brhpjzzokl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fnlerzhshu .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
+#brhpjzzokl .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #F6F7F7;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -1102,7 +1100,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#fnlerzhshu .gt_stub {
+#brhpjzzokl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1115,7 +1113,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#fnlerzhshu .gt_stub_row_group {
+#brhpjzzokl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1129,15 +1127,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#fnlerzhshu .gt_row_group_first td {
+#brhpjzzokl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fnlerzhshu .gt_row_group_first th {
+#brhpjzzokl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fnlerzhshu .gt_summary_row {
+#brhpjzzokl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1147,16 +1145,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#fnlerzhshu .gt_first_summary_row {
+#brhpjzzokl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_first_summary_row.thick {
+#brhpjzzokl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fnlerzhshu .gt_last_summary_row {
+#brhpjzzokl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1166,7 +1164,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_grand_summary_row {
+#brhpjzzokl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1176,7 +1174,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#fnlerzhshu .gt_first_grand_summary_row {
+#brhpjzzokl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1186,7 +1184,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_last_grand_summary_row_top {
+#brhpjzzokl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1196,11 +1194,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_striped {
-  background-color: #F5F5F5;
+#brhpjzzokl .gt_striped {
+  background-color: #FAFAFA;
 }
 
-#fnlerzhshu .gt_table_body {
+#brhpjzzokl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1209,7 +1207,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_footnotes {
+#brhpjzzokl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1223,7 +1221,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_footnote {
+#brhpjzzokl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1232,7 +1230,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#fnlerzhshu .gt_sourcenotes {
+#brhpjzzokl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1246,71 +1244,71 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#fnlerzhshu .gt_sourcenote {
-  font-size: 90%;
+#brhpjzzokl .gt_sourcenote {
+  font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#fnlerzhshu .gt_left {
+#brhpjzzokl .gt_left {
   text-align: left;
 }
 
-#fnlerzhshu .gt_center {
+#brhpjzzokl .gt_center {
   text-align: center;
 }
 
-#fnlerzhshu .gt_right {
+#brhpjzzokl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fnlerzhshu .gt_font_normal {
+#brhpjzzokl .gt_font_normal {
   font-weight: normal;
 }
 
-#fnlerzhshu .gt_font_bold {
+#brhpjzzokl .gt_font_bold {
   font-weight: bold;
 }
 
-#fnlerzhshu .gt_font_italic {
+#brhpjzzokl .gt_font_italic {
   font-style: italic;
 }
 
-#fnlerzhshu .gt_super {
+#brhpjzzokl .gt_super {
   font-size: 65%;
 }
 
-#fnlerzhshu .gt_footnote_marks {
+#brhpjzzokl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fnlerzhshu .gt_asterisk {
+#brhpjzzokl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fnlerzhshu .gt_indent_1 {
+#brhpjzzokl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fnlerzhshu .gt_indent_2 {
+#brhpjzzokl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fnlerzhshu .gt_indent_3 {
+#brhpjzzokl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fnlerzhshu .gt_indent_4 {
+#brhpjzzokl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fnlerzhshu .gt_indent_5 {
+#brhpjzzokl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1319,46 +1317,62 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <caption>Table 2. Comparison between the control group and the treatment groups</caption>
 <thead>
 <tr class="header gt_col_headings">
-<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Comparison</th>
-<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">ratio</th>
-<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">P-value</th>
+<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Comparison</th>
+<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">ratio</th>
+<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">SE</th>
+<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">P-value</th>
+<th id="95% CI" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">95% CI</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">Whole Extract / Control</td>
 <td class="gt_row gt_center" headers="ratio">0.035</td>
+<td class="gt_row gt_center" headers="SE">0.007</td>
 <td class="gt_row gt_center" headers="p.value">0.0000</td>
+<td class="gt_row gt_center" headers="CI">(0.021, 0.058)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="contrast">A / Control</td>
 <td class="gt_row gt_center gt_striped" headers="ratio">0.166</td>
+<td class="gt_row gt_center gt_striped" headers="SE">0.015</td>
 <td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+<td class="gt_row gt_center gt_striped" headers="CI">(0.13, 0.212)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">B / Control</td>
 <td class="gt_row gt_center" headers="ratio">0.141</td>
+<td class="gt_row gt_center" headers="SE">0.014</td>
 <td class="gt_row gt_center" headers="p.value">0.0000</td>
+<td class="gt_row gt_center" headers="CI">(0.109, 0.184)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="contrast">Synthetic A / Control</td>
 <td class="gt_row gt_center gt_striped" headers="ratio">0.205</td>
+<td class="gt_row gt_center gt_striped" headers="SE">0.017</td>
 <td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+<td class="gt_row gt_center gt_striped" headers="CI">(0.164, 0.256)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">Synthetic B / Control</td>
 <td class="gt_row gt_center" headers="ratio">0.293</td>
+<td class="gt_row gt_center" headers="SE">0.021</td>
 <td class="gt_row gt_center" headers="p.value">0.0000</td>
+<td class="gt_row gt_center" headers="CI">(0.241, 0.356)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="contrast">A and B / Control</td>
 <td class="gt_row gt_center gt_striped" headers="ratio">0.126</td>
+<td class="gt_row gt_center gt_striped" headers="SE">0.013</td>
 <td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+<td class="gt_row gt_center gt_striped" headers="CI">(0.096, 0.166)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">Synethic A and Synthetic B / Control</td>
 <td class="gt_row gt_center" headers="ratio">0.114</td>
+<td class="gt_row gt_center" headers="SE">0.012</td>
 <td class="gt_row gt_center" headers="p.value">0.0000</td>
+<td class="gt_row gt_center" headers="CI">(0.086, 0.152)</td>
 </tr>
 </tbody>
 </table>
@@ -1372,58 +1386,58 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <h4 class="anchored" data-anchor-id="treaments-involving-compound-a-will-be-better-than-those-involving-compound-b">3.2.2. Treaments involving compound A will be better than those involving compound B</h4>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="onkjdkkwnl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#onkjdkkwnl table {
-  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+<div id="jdtrlilmap" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#jdtrlilmap table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#onkjdkkwnl thead, #onkjdkkwnl tbody, #onkjdkkwnl tfoot, #onkjdkkwnl tr, #onkjdkkwnl td, #onkjdkkwnl th {
+#jdtrlilmap thead, #jdtrlilmap tbody, #jdtrlilmap tfoot, #jdtrlilmap tr, #jdtrlilmap td, #jdtrlilmap th {
   border-style: none;
 }
 
-#onkjdkkwnl p {
+#jdtrlilmap p {
   margin: 0;
   padding: 0;
 }
 
-#onkjdkkwnl .gt_table {
+#jdtrlilmap .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
   width: auto;
   border-top-style: solid;
   border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #FFFFFF;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D3D3D3;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_caption {
+#jdtrlilmap .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#onkjdkkwnl .gt_title {
+#jdtrlilmap .gt_title {
   color: #333333;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1432,9 +1446,9 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#onkjdkkwnl .gt_subtitle {
+#jdtrlilmap .gt_subtitle {
   color: #333333;
-  font-size: 16px;
+  font-size: 85%;
   font-weight: initial;
   padding-top: 3px;
   padding-bottom: 5px;
@@ -1444,7 +1458,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#onkjdkkwnl .gt_heading {
+#jdtrlilmap .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1456,19 +1470,19 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_bottom_border {
+#jdtrlilmap .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_col_headings {
+#jdtrlilmap .gt_col_headings {
   border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -1477,7 +1491,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_col_heading {
+#jdtrlilmap .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1490,14 +1504,14 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 6px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#onkjdkkwnl .gt_column_spanner_outer {
+#jdtrlilmap .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1509,31 +1523,31 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#onkjdkkwnl .gt_column_spanner_outer:first-child {
+#jdtrlilmap .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#onkjdkkwnl .gt_column_spanner_outer:last-child {
+#jdtrlilmap .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#onkjdkkwnl .gt_column_spanner {
+#jdtrlilmap .gt_column_spanner {
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#onkjdkkwnl .gt_spanner_row {
+#jdtrlilmap .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#onkjdkkwnl .gt_group_heading {
+#jdtrlilmap .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1559,7 +1573,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#onkjdkkwnl .gt_empty_group_heading {
+#jdtrlilmap .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1574,23 +1588,23 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#onkjdkkwnl .gt_from_md > :first-child {
+#jdtrlilmap .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#onkjdkkwnl .gt_from_md > :last-child {
+#jdtrlilmap .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#onkjdkkwnl .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
+#jdtrlilmap .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #F6F7F7;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -1601,7 +1615,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#onkjdkkwnl .gt_stub {
+#jdtrlilmap .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1614,7 +1628,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#onkjdkkwnl .gt_stub_row_group {
+#jdtrlilmap .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1628,15 +1642,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#onkjdkkwnl .gt_row_group_first td {
+#jdtrlilmap .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#onkjdkkwnl .gt_row_group_first th {
+#jdtrlilmap .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#onkjdkkwnl .gt_summary_row {
+#jdtrlilmap .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1646,16 +1660,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#onkjdkkwnl .gt_first_summary_row {
+#jdtrlilmap .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_first_summary_row.thick {
+#jdtrlilmap .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#onkjdkkwnl .gt_last_summary_row {
+#jdtrlilmap .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1665,7 +1679,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_grand_summary_row {
+#jdtrlilmap .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1675,7 +1689,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#onkjdkkwnl .gt_first_grand_summary_row {
+#jdtrlilmap .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1685,7 +1699,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_last_grand_summary_row_top {
+#jdtrlilmap .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1695,11 +1709,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_striped {
-  background-color: #F5F5F5;
+#jdtrlilmap .gt_striped {
+  background-color: #FAFAFA;
 }
 
-#onkjdkkwnl .gt_table_body {
+#jdtrlilmap .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1708,7 +1722,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_footnotes {
+#jdtrlilmap .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1722,7 +1736,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_footnote {
+#jdtrlilmap .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1731,7 +1745,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#onkjdkkwnl .gt_sourcenotes {
+#jdtrlilmap .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1745,71 +1759,71 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#onkjdkkwnl .gt_sourcenote {
-  font-size: 90%;
+#jdtrlilmap .gt_sourcenote {
+  font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#onkjdkkwnl .gt_left {
+#jdtrlilmap .gt_left {
   text-align: left;
 }
 
-#onkjdkkwnl .gt_center {
+#jdtrlilmap .gt_center {
   text-align: center;
 }
 
-#onkjdkkwnl .gt_right {
+#jdtrlilmap .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#onkjdkkwnl .gt_font_normal {
+#jdtrlilmap .gt_font_normal {
   font-weight: normal;
 }
 
-#onkjdkkwnl .gt_font_bold {
+#jdtrlilmap .gt_font_bold {
   font-weight: bold;
 }
 
-#onkjdkkwnl .gt_font_italic {
+#jdtrlilmap .gt_font_italic {
   font-style: italic;
 }
 
-#onkjdkkwnl .gt_super {
+#jdtrlilmap .gt_super {
   font-size: 65%;
 }
 
-#onkjdkkwnl .gt_footnote_marks {
+#jdtrlilmap .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#onkjdkkwnl .gt_asterisk {
+#jdtrlilmap .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#onkjdkkwnl .gt_indent_1 {
+#jdtrlilmap .gt_indent_1 {
   text-indent: 5px;
 }
 
-#onkjdkkwnl .gt_indent_2 {
+#jdtrlilmap .gt_indent_2 {
   text-indent: 10px;
 }
 
-#onkjdkkwnl .gt_indent_3 {
+#jdtrlilmap .gt_indent_3 {
   text-indent: 15px;
 }
 
-#onkjdkkwnl .gt_indent_4 {
+#jdtrlilmap .gt_indent_4 {
   text-indent: 20px;
 }
 
-#onkjdkkwnl .gt_indent_5 {
+#jdtrlilmap .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1818,16 +1832,20 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <caption>Table 3. Comparison between treatments containing compound A and compound B</caption>
 <thead>
 <tr class="header gt_col_headings">
-<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Comparison</th>
-<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">ratio</th>
-<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">P-value</th>
+<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Comparison</th>
+<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">ratio</th>
+<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">SE</th>
+<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">P-value</th>
+<th id="95% CI" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">95% CI</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">Overall A / Overall B</td>
 <td class="gt_row gt_center" headers="ratio">0.906</td>
+<td class="gt_row gt_center" headers="SE">0.072</td>
 <td class="gt_row gt_center" headers="p.value">0.2142</td>
+<td class="gt_row gt_center" headers="CI">(0.776, 1.059)</td>
 </tr>
 </tbody>
 </table>
@@ -1835,64 +1853,64 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 </div>
 </div>
 </div>
-<p>The comparison between treatments involving compound A and those involving compound B is not statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;\)</span> 0.05), indicating that treatments with compound A are not more effective than those with compound B.</p>
+<p>The comparison between treatments involving compound A and those involving compound B is not statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&gt;\)</span> 0.05), indicating that treatments with compound A are not more effective than those with compound B.</p>
 </section>
 <section id="the-0.2-micron-filtered-aloe-arborescens-treatment-will-be-the-most-effective-at-reducing-hyphae-formation" class="level4">
 <h4 class="anchored" data-anchor-id="the-0.2-micron-filtered-aloe-arborescens-treatment-will-be-the-most-effective-at-reducing-hyphae-formation">3.2.3. The 0.2 micron filtered Aloe arborescens treatment will be the most effective at reducing hyphae formation</h4>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="yfzimgzjqg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#yfzimgzjqg table {
-  font-family: Roboto, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+<div id="inarymayvi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#inarymayvi table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yfzimgzjqg thead, #yfzimgzjqg tbody, #yfzimgzjqg tfoot, #yfzimgzjqg tr, #yfzimgzjqg td, #yfzimgzjqg th {
+#inarymayvi thead, #inarymayvi tbody, #inarymayvi tfoot, #inarymayvi tr, #inarymayvi td, #inarymayvi th {
   border-style: none;
 }
 
-#yfzimgzjqg p {
+#inarymayvi p {
   margin: 0;
   padding: 0;
 }
 
-#yfzimgzjqg .gt_table {
+#inarymayvi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
   width: auto;
   border-top-style: solid;
   border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #FFFFFF;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #D3D3D3;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_caption {
+#inarymayvi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yfzimgzjqg .gt_title {
+#inarymayvi .gt_title {
   color: #333333;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1901,9 +1919,9 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-width: 0;
 }
 
-#yfzimgzjqg .gt_subtitle {
+#inarymayvi .gt_subtitle {
   color: #333333;
-  font-size: 16px;
+  font-size: 85%;
   font-weight: initial;
   padding-top: 3px;
   padding-bottom: 5px;
@@ -1913,7 +1931,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-width: 0;
 }
 
-#yfzimgzjqg .gt_heading {
+#inarymayvi .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1925,19 +1943,19 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_bottom_border {
+#inarymayvi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_col_headings {
+#inarymayvi .gt_col_headings {
   border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -1946,7 +1964,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_col_heading {
+#inarymayvi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1959,14 +1977,14 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 6px;
   padding-left: 5px;
   padding-right: 5px;
   overflow-x: hidden;
 }
 
-#yfzimgzjqg .gt_column_spanner_outer {
+#inarymayvi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1978,31 +1996,31 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 4px;
 }
 
-#yfzimgzjqg .gt_column_spanner_outer:first-child {
+#inarymayvi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yfzimgzjqg .gt_column_spanner_outer:last-child {
+#inarymayvi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yfzimgzjqg .gt_column_spanner {
+#inarymayvi .gt_column_spanner {
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(255, 255, 255, 0);
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#yfzimgzjqg .gt_spanner_row {
+#inarymayvi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yfzimgzjqg .gt_group_heading {
+#inarymayvi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2028,7 +2046,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   text-align: left;
 }
 
-#yfzimgzjqg .gt_empty_group_heading {
+#inarymayvi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2043,23 +2061,23 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: middle;
 }
 
-#yfzimgzjqg .gt_from_md > :first-child {
+#inarymayvi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yfzimgzjqg .gt_from_md > :last-child {
+#inarymayvi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yfzimgzjqg .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
+#inarymayvi .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: rgba(255, 255, 255, 0);
+  border-top-color: #F6F7F7;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -2070,7 +2088,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   overflow-x: hidden;
 }
 
-#yfzimgzjqg .gt_stub {
+#inarymayvi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2083,7 +2101,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#yfzimgzjqg .gt_stub_row_group {
+#inarymayvi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2097,15 +2115,15 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   vertical-align: top;
 }
 
-#yfzimgzjqg .gt_row_group_first td {
+#inarymayvi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yfzimgzjqg .gt_row_group_first th {
+#inarymayvi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yfzimgzjqg .gt_summary_row {
+#inarymayvi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2115,16 +2133,16 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#yfzimgzjqg .gt_first_summary_row {
+#inarymayvi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_first_summary_row.thick {
+#inarymayvi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yfzimgzjqg .gt_last_summary_row {
+#inarymayvi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2134,7 +2152,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_grand_summary_row {
+#inarymayvi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2144,7 +2162,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#yfzimgzjqg .gt_first_grand_summary_row {
+#inarymayvi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2154,7 +2172,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-top-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_last_grand_summary_row_top {
+#inarymayvi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2164,11 +2182,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_striped {
-  background-color: #F5F5F5;
+#inarymayvi .gt_striped {
+  background-color: #FAFAFA;
 }
 
-#yfzimgzjqg .gt_table_body {
+#inarymayvi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2177,7 +2195,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-bottom-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_footnotes {
+#inarymayvi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2191,7 +2209,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_footnote {
+#inarymayvi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2200,7 +2218,7 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   padding-right: 5px;
 }
 
-#yfzimgzjqg .gt_sourcenotes {
+#inarymayvi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2214,71 +2232,71 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
   border-right-color: #D3D3D3;
 }
 
-#yfzimgzjqg .gt_sourcenote {
-  font-size: 90%;
+#inarymayvi .gt_sourcenote {
+  font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#yfzimgzjqg .gt_left {
+#inarymayvi .gt_left {
   text-align: left;
 }
 
-#yfzimgzjqg .gt_center {
+#inarymayvi .gt_center {
   text-align: center;
 }
 
-#yfzimgzjqg .gt_right {
+#inarymayvi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yfzimgzjqg .gt_font_normal {
+#inarymayvi .gt_font_normal {
   font-weight: normal;
 }
 
-#yfzimgzjqg .gt_font_bold {
+#inarymayvi .gt_font_bold {
   font-weight: bold;
 }
 
-#yfzimgzjqg .gt_font_italic {
+#inarymayvi .gt_font_italic {
   font-style: italic;
 }
 
-#yfzimgzjqg .gt_super {
+#inarymayvi .gt_super {
   font-size: 65%;
 }
 
-#yfzimgzjqg .gt_footnote_marks {
+#inarymayvi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yfzimgzjqg .gt_asterisk {
+#inarymayvi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yfzimgzjqg .gt_indent_1 {
+#inarymayvi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yfzimgzjqg .gt_indent_2 {
+#inarymayvi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yfzimgzjqg .gt_indent_3 {
+#inarymayvi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yfzimgzjqg .gt_indent_4 {
+#inarymayvi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yfzimgzjqg .gt_indent_5 {
+#inarymayvi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2287,41 +2305,55 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <caption>Table 4. Comparisons between whole extract treatment group and the remaining treatment groups</caption>
 <thead>
 <tr class="header gt_col_headings">
-<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">Comparison</th>
-<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">ratio</th>
-<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="background-color: #585D63; color: #FFFFFF; font-size: 10px; font-weight: bold; border-bottom-width: 2.5px; border-bottom-style: solid; border-bottom-color: #585d63" scope="col">P-value</th>
+<th id="Comparison" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Comparison</th>
+<th id="ratio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">ratio</th>
+<th id="SE" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">SE</th>
+<th id="P-value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">P-value</th>
+<th id="95% CI" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">95% CI</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">A / Whole Extract</td>
 <td class="gt_row gt_center" headers="ratio">4.700</td>
+<td class="gt_row gt_center" headers="SE">0.945</td>
 <td class="gt_row gt_center" headers="p.value">0.0000</td>
+<td class="gt_row gt_center" headers="CI">(2.765, 7.989)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="contrast">B / Whole Extract</td>
 <td class="gt_row gt_center gt_striped" headers="ratio">4.000</td>
+<td class="gt_row gt_center gt_striped" headers="SE">0.817</td>
 <td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+<td class="gt_row gt_center gt_striped" headers="CI">(2.334, 6.854)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">Synthetic A / Whole Extract</td>
 <td class="gt_row gt_center" headers="ratio">5.800</td>
+<td class="gt_row gt_center" headers="SE">1.147</td>
 <td class="gt_row gt_center" headers="p.value">0.0000</td>
+<td class="gt_row gt_center" headers="CI">(3.443, 9.771)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="contrast">Synthetic B / Whole Extract</td>
 <td class="gt_row gt_center gt_striped" headers="ratio">8.300</td>
+<td class="gt_row gt_center gt_striped" headers="SE">1.604</td>
 <td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+<td class="gt_row gt_center gt_striped" headers="CI">(4.985, 13.82)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="contrast">A and B / Whole Extract</td>
 <td class="gt_row gt_center" headers="ratio">3.567</td>
+<td class="gt_row gt_center" headers="SE">0.737</td>
 <td class="gt_row gt_center" headers="p.value">0.0000</td>
+<td class="gt_row gt_center" headers="CI">(2.068, 6.151)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="contrast">Synethic A and Synthetic B / Whole Extract</td>
 <td class="gt_row gt_center gt_striped" headers="ratio">3.233</td>
+<td class="gt_row gt_center gt_striped" headers="SE">0.675</td>
 <td class="gt_row gt_center gt_striped" headers="p.value">0.0000</td>
+<td class="gt_row gt_center gt_striped" headers="CI">(1.863, 5.611)</td>
 </tr>
 </tbody>
 </table>
@@ -2329,15 +2361,14 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 </div>
 </div>
 </div>
-<p>Once again, all tests are statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;\)</span> 0.05). Since all of the ratios are bigger than 1, this suggest that the 0.2-micron filtered Aloe arborescens extract is the most effective treatment among the seven treatments tested.</p>
+<p>Once again, all tests are statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt;\)</span> 0.05). Since all of the ratios are bigger than 1, this suggest that the 0.2-micron filtered Aloe arborescens extract is the most effective treatment among the seven treatments tested. From the estimated mean ratios, it appears that the second and third effective compounds following the whole extract are combination of compound A and B (3.233) and combination of synthetic A and synthetic B (3.567).</p>
 <p>The results also show that using a combination of both compound A and compound B, regardless of whether they are natural or synthetic, is more effective than using either the natural or synthetic form of the compounds individually.</p>
 </section>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion"><strong>4. Conclusion</strong></h2>
-<p>After perfoming pairwise contrasts, it can be concluded that all of the significantly inhibit the formation of hyphae. Among them, the 0.2 micron filtered Aloe arborescens extract is found to be the most effective.</p>
-<p>When comparing treatments containing compound A to those containing compound B, no significant difference in the effectiveness is observed between the two groups.</p>
+<p>After perfoming pairwise contrasts, it can be concluded that all of the significantly inhibit the formation of hyphae. Among them, the 0.2 micron filtered Aloe arborescens extract is found to be the most effective. When comparing treatments containing compound A to those containing compound B, no significant difference in the effectiveness is observed between the two groups.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references"><strong>5. References</strong></h2>
@@ -2347,9 +2378,11 @@ log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times \text{treatment}_{ij}
 <p>H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.</p>
 <p>Iannone R, Cheng J, Schloerke B, Hughes E, Lauer A, Seo J (2024). <em>gt: Easily Create Presentation-Ready Display Tables</em>. R package version 0.10.1, <a href="https://CRAN.R-project.org/package=gt" class="uri">https://CRAN.R-project.org/package=gt</a>.</p>
 <p>Mock T (2023). <em>gtExtras: Extending ‘gt’ for Beautiful HTML Tables</em>. R package version 0.5.0, <a href="https://CRAN.R-project.org/package=gtExtras" class="uri">https://CRAN.R-project.org/package=gtExtras</a>.</p>
+<p>Venables, W. N. &amp; Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York. ISBN 0-387-95457-0.</p>
 <p>Wickham H, Vaughan D, Girlich M (2023). <em>tidyr: Tidy Messy Data</em>. R package version 1.3.0, <a href="https://CRAN.R-project.org/package=tidyr" class="uri">https://CRAN.R-project.org/package=tidyr</a>.</p>
-<p>Muldoon, A. (2019, April 15). Custom contrasts in Emmeans. Very statisticious. <a href="https://aosmith.rbind.io/2019/04/15/custom-contrasts-emmeans/" class="uri">https://aosmith.rbind.io/2019/04/15/custom-contrasts-emmeans/</a></p>
-<p>Wikimedia Foundation. (2024, November 5). False discovery rate. Wikipedia. <a href="https://en.wikipedia.org/wiki/False_discovery_rate" class="uri">https://en.wikipedia.org/wiki/False_discovery_rate</a></p>
+<p>Negative Binomial Regression | R Data Analysis Examples. (n.d.). Stats.oarc.ucla.edu. <a href="https://stats.oarc.ucla.edu/r/dae/negative-binomial-regression/" class="uri">https://stats.oarc.ucla.edu/r/dae/negative-binomial-regression/</a>.</p>
+<p>Muldoon, A. (2019, April 15). Custom contrasts in Emmeans. Very statisticious. <a href="https://aosmith.rbind.io/2019/04/15/custom-contrasts-emmeans/" class="uri">https://aosmith.rbind.io/2019/04/15/custom-contrasts-emmeans/</a>.</p>
+<p>Wikimedia Foundation. (2024, November 5). False discovery rate. Wikipedia. <a href="https://en.wikipedia.org/wiki/False_discovery_rate" class="uri">https://en.wikipedia.org/wiki/False_discovery_rate</a>.</p>
 
 
 </section>
