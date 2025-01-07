@@ -126,7 +126,7 @@ $$
 This effectively models the logarithm of the proportion of cells forming hyphae relative to the upper bound (200). As a result, the response variable is now constrained to a bounded range between 0 and 1, which is more appropriate when the counts have an upper limit. Thus, the formula for the Negative Binomial GLM with offset can be written as:
 
 $$
-log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times I(\text{trt}_1 = \text{Whole}) + \beta_2 \times I(\text{trt}_2 = \text{A}) + \ldots + \beta_7 \times I(\text{trt}_7 = \text{A-SA and B-SA}) \,+\,log(200)
+log(\frac{X_{ij}}{200}) = \beta_0 + \beta_1 \times I(\text{trt}_1 = \text{Whole}) + \beta_2 \times I(\text{trt}_2 = \text{A}) + \ldots + \beta_7 \times I(\text{trt}_7 = \text{A-SA and B-SA})
 $$
 
 It is worth noting that an alternative to the Negative Binomial GLM is a Poisson GLM when working with count data. However, in the case of the provided data, the variance of the `GT_total` variable (2498.574) is much higher than the mean (44.2). This overdispersion violates a key assumption of the Poisson distribution, which requires the mean and variance to be equal, making the Poisson GLM inappropriate for this analysis. To correct for overdispersion, a quasi-Poisson GLM can be used here, but its lack of a log-likelihood makes it impossible to use any of the likelihood-based tools. As such, a Negative Binomial GLM would be preferred.
@@ -374,15 +374,12 @@ Iannone R, Cheng J, Schloerke B, Hughes E, Lauer A, Seo J (2024). *gt: Easily Cr
 
 Mock T (2023). *gtExtras: Extending 'gt' for Beautiful HTML Tables*. R package version 0.5.0, <https://CRAN.R-project.org/package=gtExtras>.
 
-Venables, W. N. & Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York.
-  ISBN 0-387-95457-0
+Venables, W. N. & Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth Edition. Springer, New York. ISBN 0-387-95457-0
 
 Wickham H, Vaughan D, Girlich M (2023). *tidyr: Tidy Messy Data*. R package version 1.3.0, <https://CRAN.R-project.org/package=tidyr>.
 
-Negative Binomial Regression | R Data Analysis Examples. (n.d.). Stats.oarc.ucla.edu. <https://stats.oarc.ucla.edu/r/dae/negative-binomial-regression/>
+Negative Binomial Regression \| R Data Analysis Examples. (n.d.). Stats.oarc.ucla.edu. <https://stats.oarc.ucla.edu/r/dae/negative-binomial-regression/>
 
 Muldoon, A. (2019, April 15). Custom contrasts in Emmeans. Very statisticious. <https://aosmith.rbind.io/2019/04/15/custom-contrasts-emmeans/>
 
 Wikimedia Foundation. (2024, November 5). False discovery rate. Wikipedia. <https://en.wikipedia.org/wiki/False_discovery_rate>
-
-
